@@ -79,7 +79,7 @@
   .nav_list {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
+    gap: 1rem;
   }
   .nav_icon {
     font-size: 1.2rem;
@@ -91,6 +91,7 @@
     font-size: 1.5rem;
     cursor: pointer;
     color: var(--text-color);
+    margin-bottom: 2rem;
   }
 
   .nav_close:hover {
@@ -102,10 +103,16 @@
     cursor: pointer;
   }
 
-  .nav_icon,
-  .nav_close,
+  .nav_icon {
+    display: block;
+  }
+  .nav_close {
+    display: block;
+  }
+
   .nav_toggle {
     display: block;
+    margin-left: auto;
   }
 }
 
