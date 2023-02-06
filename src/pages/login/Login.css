@@ -1,0 +1,10 @@
+.login_container {
+  text-align: center;
+  padding: 2rem 2rem 2rem 2rem;
+  border: 1px solid white;
+  border-radius: 10px;
+  max-width: fit-content;
+}
+.main {
+  padding: 5rem 10rem 5rem 10rem;
+}
