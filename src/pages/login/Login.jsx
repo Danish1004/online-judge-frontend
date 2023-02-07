@@ -6,10 +6,25 @@ const Login = () => {
       <div className="login_container">
         <h1 className="main_heading">Login</h1>
         <div className="login_box">
-          <h3>Username</h3>
-          <input type="text" required></input>
-          <h3>Password</h3>
-          <input type="password" required></input>
+          <div className="input_area">
+            <h3>Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h3>
+            <input type="text" required></input>
+          </div>
+          <div className="input_area">
+            <h3>Username</h3>
+            <input type="text" required></input>
+          </div>
+          <div className="input_area">
+            <h3>Email&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h3>
+            <input type="email" required></input>
+          </div>
+          <div className="input_area">
+            <h3>Password&nbsp;</h3>
+            <input type="password" required></input>
+          </div>
+          <button className="submit" type="submit">
+            Submit
+          </button>
         </div>
       </div>
     </div>

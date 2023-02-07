@@ -15,6 +15,7 @@
 
   /*========== Font weight ==========*/
   --font-normal: 100;
+  --font-heading-light: 200;
   --font-medium: 300;
   --font-semi-bold: 400;
 }
