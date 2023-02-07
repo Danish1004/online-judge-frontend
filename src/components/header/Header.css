@@ -15,9 +15,6 @@
   align-items: center;
   column-gap: 3rem;
 }
-li:last-of-type {
-  margin-left: 70rem;
-}
 
 .nav_logo {
   color: var(--text-color);

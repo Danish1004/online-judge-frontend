@@ -33,11 +33,6 @@ const Header = () => {
                 Profile
               </a>
             </li>
-            <li className="nav_item">
-              <a href="/" className="nav_link">
-                Hi, User
-              </a>
-            </li>
           </ul>
 
           <i
