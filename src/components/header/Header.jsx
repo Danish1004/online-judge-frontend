@@ -28,6 +28,16 @@ const Header = () => {
                 <i className="uil uil-file-alt nav_icon"></i> Leaderboard
               </a>
             </li>
+            <li className="nav_item">
+              <a href="profile" className="nav_link">
+                Profile
+              </a>
+            </li>
+            <li className="nav_item">
+              <a href="/" className="nav_link">
+                Hi, User
+              </a>
+            </li>
           </ul>
 
           <i
