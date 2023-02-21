@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Header.css";
+import { Link } from "react-router-dom";
 const Header = () => {
   const [Toggle, ShowMenu] = useState(false);
   return (
@@ -12,26 +13,26 @@ const Header = () => {
         <div className={Toggle ? "nav_menu show-menu" : "nav_menu"}>
           <ul className="nav_list grid">
             <li className="nav_item">
-              <a href="#home" className="nav_link active-link">
+              <Link to="/home" className="nav_link active-link">
                 <i className="uil uil-question-circle nav_icon"></i> Problems
-              </a>
+              </Link>
             </li>
 
             <li className="nav_item">
-              <a href="#about" className="nav_link">
+              <Link to="/editor" className="nav_link">
                 <i className="uil uil-user nav_icon"></i> Editor
-              </a>
+              </Link>
             </li>
 
             <li className="nav_item">
-              <a href="#skills" className="nav_link">
+              <Link to="/home" className="nav_link">
                 <i className="uil uil-file-alt nav_icon"></i> Leaderboard
-              </a>
+              </Link>
             </li>
             <li className="nav_item">
-              <a href="profile" className="nav_link">
+              <Link to="/profile" className="nav_link">
                 Profile
-              </a>
+              </Link>
             </li>
           </ul>
 
