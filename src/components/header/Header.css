@@ -8,7 +8,7 @@
   background-color: var(--body-color);
 }
 
-.nav {
+.nav_container {
   height: 5rem;
   display: flex;
   justify-content: flex-start;

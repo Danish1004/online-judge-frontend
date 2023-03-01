@@ -1,27 +1,9 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import wave from "../../images/wave.png";
 import join from "../../images/bg.svg";
-import avatar from "../../images/avatar.svg";
 import "./Login.css";
 const Login = () => {
-  const inputs = document.querySelectorAll(".input");
-
-  function addcl() {
-    let parent = this.parentNode.parentNode;
-    parent.classList.add("focus");
-  }
-
-  function remcl() {
-    let parent = this.parentNode.parentNode;
-    if (this.value === "") {
-      parent.classList.remove("focus");
-    }
-  }
-
-  inputs.forEach((input) => {
-    input.addEventListener("focus", addcl);
-    input.addEventListener("blur", remcl);
-  });
   return (
     <div>
       <img className="wave" src={wave} alt="wave" />
@@ -30,30 +12,27 @@ const Login = () => {
           <img src={join} alt="join" />
         </div>
         <div className="login-content">
-          <form>
-            <img src={avatar} alt="avatar" />
-            <h2 className="title">Welcome</h2>
-            <div className="input-div one">
-              <div className="i">
-                <i className="fas fa-user"></i>
-              </div>
-              <div className="div">
-                <h5>Username</h5>
-                <input type="text" className="input" />
-              </div>
+          <div className="form-box">
+            <div className="form-value">
+              <form action="">
+                <h2 className="title">Welcome </h2>
+                <div className="inputbox">
+                  <input type="email" required />
+                  <label>Email</label>
+                </div>
+                <div className="inputbox">
+                  <input type="password" required />
+                  <label>Password</label>
+                </div>
+                <input type="submit" className="btn" value="Login"></input>
+                <div className="register">
+                  <p className="one1">
+                    Don't have a account <Link to="/">Register</Link>
+                  </p>
+                </div>
+              </form>
             </div>
-            <div className="input-div pass">
-              <div className="i">
-                <i className="fas fa-lock"></i>
-              </div>
-              <div className="div">
-                <h5>Password</h5>
-                <input type="password" className="input" />
-              </div>
-            </div>
-
-            <input type="submit" class="btn" value="Login"></input>
-          </form>
+          </div>
         </div>
       </div>
     </div>

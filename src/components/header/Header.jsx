@@ -5,7 +5,7 @@ const Header = () => {
   const [Toggle, ShowMenu] = useState(false);
   return (
     <header className="header">
-      <nav className="nav container">
+      <nav className="nav_container">
         <a href="index.html" className="nav_logo">
           semicolon
         </a>

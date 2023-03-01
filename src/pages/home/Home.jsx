@@ -11,8 +11,8 @@ const Home = () => {
       <div className="about_section">
         <div>
           <h1 className="main_title">Learn Algorithm Together</h1>
-          <div class="about_grid">
-            <div class="grid-item">
+          <div className="about_grid">
+            <div className="grid-item">
               <div className="about_info">
                 <h2>Join a Room</h2>
                 <p className="p1">
@@ -21,7 +21,7 @@ const Home = () => {
                 </p>
               </div>
             </div>
-            <div class="grid-item">
+            <div className="grid-item">
               <div className="about_info">
                 <h2>Start The Room</h2>
                 <p>
@@ -30,7 +30,7 @@ const Home = () => {
                 </p>
               </div>
             </div>
-            <div class="grid-item">
+            <div className="grid-item">
               <div className="about_info">
                 <h2>Solve Problems</h2>
                 <p>
