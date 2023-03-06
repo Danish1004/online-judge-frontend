@@ -3,12 +3,37 @@ import "./Registration.css";
 import wave from "../../images/wave.png";
 import join from "../../images/bg.svg";
 const Registration = () => {
-  const [user, setUser] = useState({
-    name: "",
-    username: "",
-    email: "",
-    password: "",
+  const [name, setName] = useState("");
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  var myHeaders = new Headers();
+
+  myHeaders.append("Authorization", "Bearer null");
+  myHeaders.append("Content-Type", "application/json");
+
+  var raw = JSON.stringify({
+    name: { setName },
+    username: { setUsername },
+    email: { setEmail },
+    password: { setPassword },
   });
+
+  fetch("https://semicolon.herokuapp.com/api/auth/signup", {
+    method: "POST",
+    headers: myHeaders,
+    body: raw,
+  })
+    .then((res) => {})
+    .catch((err) => {});
+
+  // const [user, setUser] = useState({
+  //   name: "",
+  //   username: "",
+  //   email: "",
+  //   password: "",
+  // });
   return (
     <div>
       <img className="wave" src={wave} alt="wave" />
@@ -17,27 +42,46 @@ const Registration = () => {
           <img src={join} alt="join" />
         </div>
         <div className="login-content">
-          {/* <h2 className="title">Register </h2> */}
           <div className="form-box">
             <div className="form-value">
-              <form action="">
+              <form>
                 <div className="inputbox">
-                  <input type="text" required />
+                  <input
+                    type="text"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    required
+                  />
                   <label>Name</label>
                 </div>
                 <div className="inputbox">
-                  <input type="text" required />
+                  <input
+                    type="text"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    required
+                  />
                   <label>UserName</label>
                 </div>
                 <div className="inputbox">
-                  <input type="email" required />
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                  />
                   <label>Email</label>
                 </div>
                 <div className="inputbox">
-                  <input type="password" required />
+                  <input
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                  />
                   <label>Password</label>
                 </div>
-                <input type="submit" className="btn" value="Register"></input>
+                <input type="submit" className="btn"></input>
               </form>
             </div>
           </div>
