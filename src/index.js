@@ -6,6 +6,8 @@ import Home from "./pages/home/Home";
 import Registration from "./pages/registration/Registration";
 import Profile from "./pages/profile/Profile";
 import Login from "./pages/login/Login";
+// import Editor from "./pages/editor/Editor";
+import CodeWindow from "./components/codewindow/CodeWindow";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -23,10 +25,10 @@ const router = createBrowserRouter([
     path: "/login",
     element: <Login />,
   },
-  // {
-  //   path: "/editor",
-  //   element: <TextEditor />,
-  // },
+  {
+    path: "/editor",
+    element: <CodeWindow />,
+  },
 ]);
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

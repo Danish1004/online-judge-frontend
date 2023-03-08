@@ -8,32 +8,6 @@ const Registration = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  var myHeaders = new Headers();
-
-  myHeaders.append("Authorization", "Bearer null");
-  myHeaders.append("Content-Type", "application/json");
-
-  var raw = JSON.stringify({
-    name: { setName },
-    username: { setUsername },
-    email: { setEmail },
-    password: { setPassword },
-  });
-
-  fetch("https://semicolon.herokuapp.com/api/auth/signup", {
-    method: "POST",
-    headers: myHeaders,
-    body: raw,
-  })
-    .then((res) => {})
-    .catch((err) => {});
-
-  // const [user, setUser] = useState({
-  //   name: "",
-  //   username: "",
-  //   email: "",
-  //   password: "",
-  // });
   return (
     <div>
       <img className="wave" src={wave} alt="wave" />
