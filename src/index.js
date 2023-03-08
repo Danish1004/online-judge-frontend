@@ -6,8 +6,7 @@ import Home from "./pages/home/Home";
 import Registration from "./pages/registration/Registration";
 import Profile from "./pages/profile/Profile";
 import Login from "./pages/login/Login";
-// import Editor from "./pages/editor/Editor";
-import LangDrop from "./components/langdrop/LangDrop";
+import OutputWindow from "./components/outputwindow/OutputWindow";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -27,7 +26,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/editor",
-    element: <LangDrop />,
+    element: <OutputWindow />,
   },
 ]);
 const root = ReactDOM.createRoot(document.getElementById("root"));
