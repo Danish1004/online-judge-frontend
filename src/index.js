@@ -7,7 +7,8 @@ import Registration from "./pages/registration/Registration";
 import Profile from "./pages/profile/Profile";
 import Login from "./pages/login/Login";
 // import Editor from "./pages/editor/Editor";
-import CodeWindow from "./components/codewindow/CodeWindow";
+// import CodeWindow from "./components/codewindow/CodeWindow";
+import CustomInput from "./components/custominput/CustomInput";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -27,7 +28,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/editor",
-    element: <CodeWindow />,
+    element: <CustomInput />,
   },
 ]);
 const root = ReactDOM.createRoot(document.getElementById("root"));
