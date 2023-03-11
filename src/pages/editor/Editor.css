@@ -1,3 +1,6 @@
+/* * {
+  background-color: white;
+} */
 .main-head {
   background-image: linear-gradient(to right, var(--tw-gradient-stops));
   background-color: #ec4899;
@@ -20,6 +23,7 @@
   display: flex;
   flex-direction: row;
   align-items: flex-start;
+  gap: 10px;
   padding-top: 1rem;
   padding-bottom: 1rem;
   padding-left: 1rem;
@@ -55,7 +59,7 @@
   margin-top: 1rem;
   border-radius: 0.375rem;
   border-width: 2px;
-  border-color: #000000;
+  border-color: #f9f9f9;
 }
 .buttons:hover {
   background-color: #ffffff;
@@ -63,7 +67,7 @@
     opacity, box-shadow, transform;
   transition-duration: 200ms;
   flex-shrink: 0;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  box-shadow: 0 1px 3px 0 rgb(255, 255, 255), 0 1px 2px 0 rgb(254, 252, 252);
 }
 .depth {
   opacity: 0.5;
