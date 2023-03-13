@@ -7,6 +7,7 @@ import { languageOptions } from "../../constants/languageOptions";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Header from "../../components/header/Header";
 
 import { defineTheme } from "../../lib/defineTheme";
 import useKeyPress from "../../hooks/useKeyPress";
@@ -211,8 +212,9 @@ const Editor = () => {
         draggable
         pauseOnHover
       />
+      <Header />
 
-      <div className="main-head"></div>
+      {/* <div className="main-head"></div> */}
       <div className="main-content">
         <div className="first-row">
           <LangDrop onSelectChange={onSelectChange} />
