@@ -7,6 +7,7 @@ const Registration = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [resp, setResp] = useState("");
 
   var myHeaders = new Headers();
   myHeaders.append("Authorization", "Bearer null");
@@ -25,9 +26,14 @@ const Registration = () => {
       }),
       redirect: "follow",
     })
-      .then((response) => response.text())
-      .then((result) => console.log(result))
-      .catch((error) => console.log("error", error));
+      .then((response) => {
+        response.json().then((value) => {
+          console.log(value.message);
+          setResp(value.message);
+        });
+      })
+      .then((result) => result)
+      .catch((error) => error);
   };
   return (
     <div>
@@ -82,7 +88,9 @@ const Registration = () => {
                   className="btn"
                 ></input>
               </form>
-              <div>{/* <h6>hello</h6> */}</div>
+              <div>
+                <h5 className="response-line"> {resp} </h5>
+              </div>
             </div>
           </div>
         </div>
