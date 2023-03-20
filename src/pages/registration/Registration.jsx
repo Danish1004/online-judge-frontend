@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Registration.css";
 import wave from "../../images/wave.png";
 import join from "../../images/bg.svg";
+import { Link } from "react-router-dom";
 const Registration = () => {
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
@@ -87,11 +88,16 @@ const Registration = () => {
                   onClick={handleClick}
                   className="btn"
                 ></input>
+                <div className="login">
+                  <p className="one1">
+                    Alerady have a account <Link to="/Login">Login</Link>
+                  </p>
+                </div>
               </form>
-              <div>
-                <h5 className="response-line"> {resp} </h5>
-              </div>
             </div>
+          </div>
+          <div className="line">
+            <h5 className="response-line"> {resp} </h5>
           </div>
         </div>
       </div>
