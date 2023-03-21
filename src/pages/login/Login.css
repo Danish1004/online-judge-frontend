@@ -29,7 +29,8 @@
 
 .login-content {
   display: flex;
-  justify-content: flex-start;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
   text-align: center;
 }
@@ -57,7 +58,7 @@
 .form-box {
   position: relative;
   width: 400px;
-  height: 450px;
+  /* height: 450px; */
   background: transparent;
   border: 2px solid rgba(255, 255, 255, 0.5);
   border-radius: 20px;
