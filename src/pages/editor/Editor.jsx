@@ -68,7 +68,8 @@ const Editor = () => {
     if (enterPress && ctrlPress) {
       console.log("enterPress", enterPress);
       console.log("ctrlPress", ctrlPress);
-      handleCompile();
+      // handleCompile();
+      //isko dekh lena ek baar
     }
   }, [ctrlPress, enterPress]);
   const onChange = (action, data) => {
