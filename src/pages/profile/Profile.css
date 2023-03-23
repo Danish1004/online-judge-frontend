@@ -1,0 +1,14 @@
+.main-box {
+  margin: 4rem 4rem 4rem 4rem;
+  align-items: center;
+}
+
+.profile-content {
+  display: flex;
+  flex-direction: row;
+  height: 50vh;
+}
+
+.pic-card {
+  background-color: antiquewhite;
+}

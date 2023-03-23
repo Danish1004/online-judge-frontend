@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import wave from "../../images/wave.png";
 import join from "../../images/bg.svg";
 import "./Login.css";
 const Login = () => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   return (
     <div>
       <img className="wave" src={wave} alt="wave" />
