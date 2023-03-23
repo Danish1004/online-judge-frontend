@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import wave from "../../images/wave.png";
 import join from "../../images/bg.svg";
 import "./Login.css";
+import Header from "../../components/header/Header";
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -37,6 +38,7 @@ const Login = () => {
   };
   return (
     <div>
+      <Header />
       <img className="wave" src={wave} alt="wave" />
       <div className="container">
         <div className="img">

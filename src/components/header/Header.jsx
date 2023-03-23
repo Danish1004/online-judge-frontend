@@ -35,6 +35,15 @@ const Header = () => {
               </Link>
             </li>
           </ul>
+          <div className="other-side">
+            <ul>
+              <li className="nav_item">
+                <Link to="/login" className="nav_link">
+                  <i className="uil uil-file-alt nav_icon"></i> Login
+                </Link>
+              </li>
+            </ul>
+          </div>
 
           <i
             className="uil uil-times nav_close"

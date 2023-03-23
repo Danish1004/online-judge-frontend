@@ -1,6 +1,6 @@
 .header {
   width: 100%;
-  /* position: fixed; */
+  position: fixed;
   padding: 0 2rem 0 2rem;
   top: 0;
   left: 0;
@@ -8,10 +8,14 @@
   background-color: var(--body-color);
 }
 
+.nav_menu {
+  display: flex;
+  gap: 3rem;
+}
 .nav_container {
   height: 5rem;
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   column-gap: 3rem;
 }

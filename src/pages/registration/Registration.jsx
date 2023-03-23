@@ -3,6 +3,8 @@ import "./Registration.css";
 import wave from "../../images/wave.png";
 import join from "../../images/bg.svg";
 import { Link } from "react-router-dom";
+import Header from "../../components/header/Header";
+
 const Registration = () => {
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
@@ -36,8 +38,10 @@ const Registration = () => {
       .then((result) => result)
       .catch((error) => error);
   };
+
   return (
     <div>
+      <Header />
       <img className="wave" src={wave} alt="wave" />
       <div className="container">
         <div className="img">
