@@ -6,9 +6,15 @@ const Header = () => {
   return (
     <header className="header">
       <nav className="nav_container">
-        <a href="index.html" className="nav_logo">
+        {/* <a href="index.html" className="nav_logo">
           semicolon
-        </a>
+        </a> */}
+
+        <ul>
+          <Link to="/home" className="nav_logo">
+            semicolon
+          </Link>
+        </ul>
 
         <div className={Toggle ? "nav_menu show-menu" : "nav_menu"}>
           <ul className="nav_list grid">
