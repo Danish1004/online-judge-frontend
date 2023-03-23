@@ -4,10 +4,13 @@ import wave from "../../images/wave.png";
 import join from "../../images/bg.svg";
 import "./Login.css";
 import Header from "../../components/header/Header";
+import { useNavigate } from "react-router-dom";
+
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [resp, setResp] = useState("");
+  const navigate = useNavigate();
 
   var myHeaders = new Headers();
   myHeaders.append(
@@ -31,6 +34,9 @@ const Login = () => {
         response.json().then((value) => {
           console.log(value.message);
           setResp(value.message);
+          if (value.status === 200) {
+            navigate("/home");
+          }
         });
       })
       .then((result) => result)
