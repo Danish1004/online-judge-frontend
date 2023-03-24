@@ -35,7 +35,10 @@ const Login = () => {
           console.log(value.message);
           setResp(value.message);
           if (value.status === 200) {
-            navigate("/home");
+            // navigate("/home");
+            setTimeout(() => {
+              navigate("/home");
+            }, 500);
           }
         });
       })
