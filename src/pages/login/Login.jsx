@@ -36,6 +36,7 @@ const Login = () => {
           setResp(value.message);
           if (value.status === 200) {
             // navigate("/home");
+            //navigation redirect to home after login in 1 sec.
             setTimeout(() => {
               navigate("/home");
             }, 500);

@@ -8,6 +8,7 @@ const Profile = () => {
   return (
     <div className="main">
       <Header />
+
       <div className="main-box">
         <div className="profile-content">
           <div className="pic-card">

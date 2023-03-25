@@ -12,6 +12,7 @@
 .main-content {
   display: flex;
   flex-direction: row;
+  margin-top: 5rem;
 }
 .first-row {
   padding-top: 0.5rem;
