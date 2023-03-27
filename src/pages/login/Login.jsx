@@ -5,6 +5,7 @@ import join from "../../images/bg.svg";
 import "./Login.css";
 import Header from "../../components/header/Header";
 import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -35,17 +36,23 @@ const Login = () => {
           console.log(value.message);
           setResp(value.message);
           if (value.status === 200) {
-            // navigate("/home");
-            //navigation redirect to home after login in 1 sec.
+            setUsername(username); // Setting the username in the state
+            Cookies.set("loggedIn", "true", { expires: 2 });
+            Cookies.set("userData", JSON.stringify({ username }), {
+              expires: 2,
+            }); // Storing the username in the cookie
             setTimeout(() => {
               navigate("/home");
             }, 500);
+            console.log(`Logged in as ${username}`);
           }
         });
       })
-      .then((result) => result)
-      .catch((error) => error);
+      .catch((error) => {
+        console.log(error);
+      });
   };
+
   return (
     <div>
       <Header />

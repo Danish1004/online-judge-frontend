@@ -2,8 +2,10 @@ import React from "react";
 import "./Profile.css";
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
-// import user from "../../images/user1.png";
-// import edit from "../../images/edit.png";
+import banner from "../../images/banner.jpeg";
+import user from "../../images/user1.png";
+import withAuth from "../../routes/withAuth";
+
 const Profile = () => {
   return (
     <div className="main">
@@ -82,28 +84,15 @@ const Profile = () => {
           </form>
           {/* new div */}
           <div className="details-card">
-            <h5 className="heading-main">Information</h5>
-            <div className="info-1">
-              <div className="col">
-                <div className="heading-2">Email</div>
-                <div className="info-2">test@gmail.com</div>
-              </div>
+            <div className="image-banner">
+              <img src={banner} alt="background" />
 
-              <div className="col">
-                <div className="heading-2">Phone</div>
-                <div className="info-2">00000 00000</div>
-              </div>
+              <img src={user} alt="userimg" />
             </div>
-            <div className="info-1">
-              <div className="col">
-                <div className="heading-2">Test</div>
-                <div className="info-2">test@gmail.com</div>
-              </div>
-
-              <div className="col">
-                <div className="heading-2">Test2</div>
-                <div className="info-2">00000 00000</div>
-              </div>
+            <div className="user-info">
+              <h2>Test Name</h2>
+              <h3>Username</h3>
+              <h5>Address</h5>
             </div>
           </div>
         </div>
@@ -113,4 +102,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default withAuth(Profile);

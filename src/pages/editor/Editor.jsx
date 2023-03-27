@@ -17,6 +17,7 @@ import CustomInput from "../../components/custominput/CustomInput";
 import OutputDetails from "../../components/outputdetails/OutputDetails";
 import ThemeDropDown from "../../components/themedrop/ThemeDropDown";
 import LangDrop from "../../components/langdrop/LangDrop";
+import withAuth from "../../routes/withAuth";
 
 const javascriptDefault = `/**
 * Problem: Binary Search: Search a sorted array for a target value.
@@ -257,4 +258,4 @@ const Editor = () => {
   );
 };
 
-export default Editor;
+export default withAuth(Editor);

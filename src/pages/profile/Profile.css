@@ -94,3 +94,34 @@ input {
   cursor: pointer;
   transition: 0.5s;
 }
+
+.image-banner {
+  position: relative;
+  display: inline-block;
+}
+.image-banner {
+  display: block;
+}
+.image-banner img:first-child {
+  position: relative;
+  z-index: 1;
+  height: 10rem;
+  width: 100%;
+}
+
+.image-banner img:last-child {
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  width: 9rem;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  z-index: 2;
+}
+.user-info {
+  text-align: center;
+  margin: 3rem 0 0 0;
+  padding: 1rem 0 0 0;
+  color: var(--text-color);
+  font-weight: var(--font-semi-bold);
+}
