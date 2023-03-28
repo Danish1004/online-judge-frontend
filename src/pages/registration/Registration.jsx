@@ -13,7 +13,10 @@ const Registration = () => {
   const [resp, setResp] = useState("");
 
   var myHeaders = new Headers();
-  myHeaders.append("Authorization", "Bearer null");
+  myHeaders.append(
+    "Authorization",
+    "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiJmNTE4OGZjNy0zYTAxLTRhNjMtYjczOS00NzcwYjc0NTBkZjgiLCJpYXQiOjE2Nzk2MDE0MjEsImV4cCI6MTY3OTY4NzgyMX0.XumOlbha7KcONI2t2qsDwWCy1QG4cLCdpR8W1m1QnR0"
+  );
   myHeaders.append("Content-Type", "application/json");
 
   const handleClick = (e) => {

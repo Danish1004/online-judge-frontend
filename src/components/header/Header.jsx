@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import "./Header.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 
 const Header = () => {
   const [Toggle, ShowMenu] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
   const [username, setUsername] = useState("");
+  const navigate = useNavigate();
 
   function handleLogout() {
     Cookies.remove("loggedIn");
@@ -22,7 +23,9 @@ const Header = () => {
     const isLoggedIn = Cookies.get("loggedIn");
     if (isLoggedIn === "true") {
       setLoggedIn(true);
-      const userData = Cookies.get("userData");
+      const userData = Cookies.get("userData")
+        ? Cookies.get("userData")
+        : navigate("/home");
       const parsedUserData = JSON.parse(userData);
       const username = parsedUserData.username;
       setUsername(username);
