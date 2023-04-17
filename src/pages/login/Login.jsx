@@ -35,7 +35,7 @@ const Login = () => {
         response.json().then((value) => {
           console.log(value.message);
           setResp(value.message);
-          if (value.status === 200) {
+          if (value.success === true) {
             setUsername(username); // Setting the username in the state
             Cookies.set("loggedIn", "true", { expires: 2 });
             Cookies.set("userData", JSON.stringify({ username }), {
