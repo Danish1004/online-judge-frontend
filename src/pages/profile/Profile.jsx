@@ -18,15 +18,9 @@ const Profile = () => {
             <h2>General Information</h2>
             <div className="heading-1">
               <div className="sub-head">
-                <h5 className="sub-info">First Name</h5>
+                <h5 className="sub-info"> Name</h5>
                 <input type="text"></input>
               </div>
-              <div className="sub-head">
-                <h5 className="sub-info">Last Name</h5>
-                <input type="text"></input>
-              </div>
-            </div>
-            <div className="heading-1">
               <div className="sub-head">
                 <h5 className="sub-info">Email</h5>
                 <input type="email"></input>
@@ -35,8 +29,6 @@ const Profile = () => {
                 <h5 className="sub-info">Phone Number</h5>
                 <input type="tel"></input>
               </div>
-            </div>
-            <div className="heading-1">
               <div className="sub-head">
                 <h5 className="sub-info">Gender</h5>
                 <input type="text"></input>
@@ -46,7 +38,9 @@ const Profile = () => {
                 <input type="date"></input>
               </div>
             </div>
-            <div className="address-col">
+            {/* <div className="heading-1"></div> */}
+            {/* <div className="heading-1"></div> */}
+            {/* <div className="address-col">
               <h2>Address</h2>
               <div className="heading-1">
                 <div className="sub-head2">
@@ -72,7 +66,7 @@ const Profile = () => {
                   <input type="postal"></input>
                 </div>
               </div>
-            </div>
+            </div> */}
             <div className="">
               <input
                 type="submit"
