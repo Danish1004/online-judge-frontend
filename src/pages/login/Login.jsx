@@ -14,10 +14,10 @@ const Login = () => {
   const navigate = useNavigate();
 
   var myHeaders = new Headers();
-  myHeaders.append(
-    "Authorization",
-    "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiJmNTE4OGZjNy0zYTAxLTRhNjMtYjczOS00NzcwYjc0NTBkZjgiLCJpYXQiOjE2Nzk1ODg0NjAsImV4cCI6MTY3OTY3NDg2MH0.nJ_7tDSyXf5r2bqX5h12WdfxFndqHK9u4kXxvCRzJrs"
-  );
+  // myHeaders.append(
+  //   "Cookie",
+  //   "token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiJmNTE4OGZjNy0zYTAxLTRhNjMtYjczOS00NzcwYjc0NTBkZjgiLCJpYXQiOjE2ODE4NDQ1ODcsImV4cCI6MTY4MTkzMDk4N30.G3U6CNL660YCr1xxLoKJEQ1OGv9yF9HmJbjPcaeCTMU"
+  // );
   myHeaders.append("Content-Type", "application/json");
 
   const handleSubmit = (e) => {
@@ -36,7 +36,9 @@ const Login = () => {
           console.log(value.message);
           setResp(value.message);
           if (value.success === true) {
+            localStorage.setItem("jwtToken", value.token);
             setUsername(username); // Setting the username in the state
+            Cookies.set("tokennew", value.token, { expires: 2 });
             Cookies.set("loggedIn", "true", { expires: 2 });
             Cookies.set("userData", JSON.stringify({ username }), {
               expires: 2,
