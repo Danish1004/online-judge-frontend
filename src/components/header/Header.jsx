@@ -30,7 +30,7 @@ const Header = () => {
       const username = parsedUserData.username;
       setUsername(username);
     }
-  }, []);
+  }, [navigate]);
 
   return (
     <header className="header">
@@ -44,7 +44,7 @@ const Header = () => {
         <div className={Toggle ? "nav_menu show-menu" : "nav_menu"}>
           <ul className="nav_list grid">
             <li className="nav_item">
-              <Link to="/home" className="nav_link active-link">
+              <Link to="/problem" className="nav_link active-link">
                 <i className="uil uil-question-circle nav_icon"></i> Problems
               </Link>
             </li>

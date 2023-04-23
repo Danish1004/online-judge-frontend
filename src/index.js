@@ -7,6 +7,7 @@ import Registration from "./pages/registration/Registration";
 import Profile from "./pages/profile/Profile";
 import Login from "./pages/login/Login";
 import Editor from "./pages/editor/Editor";
+import Problem from "./pages/problems/Problem";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -28,6 +29,7 @@ const router = createBrowserRouter([
     path: "/editor",
     element: <Editor />,
   },
+  { path: "/problem", element: <Problem /> },
 ]);
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
