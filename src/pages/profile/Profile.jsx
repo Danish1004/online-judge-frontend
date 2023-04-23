@@ -12,7 +12,6 @@ const Profile = (props) => {
   const [email, setEmail] = useState(props.email);
   const [number, setNumber] = useState("");
   const [gender, setGender] = useState("");
-  const [birthdate, setBirthdate] = useState("");
 
   const fetchUserData = async () => {
     var myHeaders = new Headers();
@@ -57,6 +56,10 @@ const Profile = (props) => {
         contact_number: number,
       },
     });
+    setName("");
+    setEmail("");
+    setNumber("");
+    setGender("");
 
     const response2 = await fetch("https://semicolon.herokuapp.com/api/user", {
       method: "POST",
@@ -66,6 +69,7 @@ const Profile = (props) => {
 
     fetchUserData();
     setUserData(response2);
+    // console.log(response2.message);
   };
 
   return (
@@ -84,6 +88,7 @@ const Profile = (props) => {
                   type="text"
                   name="name"
                   value={name}
+                  placeholder={userData?.profile?.name}
                   onChange={(e) => setName(e.target.value)}
                 />
               </div>
@@ -93,6 +98,7 @@ const Profile = (props) => {
                   type="email"
                   name="email"
                   value={email}
+                  placeholder={userData?.profile?.email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
@@ -102,6 +108,7 @@ const Profile = (props) => {
                   type="tel"
                   name="phoneNumber"
                   value={number}
+                  placeholder={`+91 ${userData?.profile?.contact_number || ""}`}
                   onChange={(e) => setNumber(e.target.value)}
                 />
               </div>
@@ -111,21 +118,16 @@ const Profile = (props) => {
                   type="text"
                   name="gender"
                   value={gender}
+                  placeholder={userData?.profile?.gender}
                   onChange={(e) => setGender(e.target.value)}
-                />
-              </div>
-              <div className="sub-head">
-                <h5 className="sub-info">Birth Date</h5>
-                <input
-                  type="date"
-                  name="birthdate"
-                  value={birthdate}
-                  onChange={(e) => setBirthdate(e.target.value)}
                 />
               </div>
             </div>
             <div className="">
-              <input type="submit" className="btn-2" value="Save All" />
+              <input type="submit" className="btn-2" value="Update" />
+            </div>
+            <div className="outpt">
+              <h3>{userData.message}</h3>
             </div>
           </form>
           {/* new div */}
@@ -136,8 +138,23 @@ const Profile = (props) => {
               <img src={user} alt="userimg" />
             </div>
             <div className="user-info">
-              <h2>{userData?.profile?.name}</h2>
-              <h3>{userData?.profile?.username}</h3>
+              <div className="sub-section1">
+                <h2>{userData?.profile?.name}</h2>
+              </div>
+              <div className="sub-section2">
+                <div className="title-bar">
+                  <h4>Username :</h4>
+                  <h4>Email :</h4>
+                  <h4>Phone Number :</h4>
+                  <h4>Gender :</h4>
+                </div>
+                <div className="information">
+                  <h4>{userData?.profile?.username}</h4>
+                  <h4>{userData?.profile?.email}</h4>
+                  <h4>{userData?.profile?.contact_number}</h4>
+                  <h4>{userData?.profile?.gender}</h4>
+                </div>
+              </div>
             </div>
           </div>
         </div>

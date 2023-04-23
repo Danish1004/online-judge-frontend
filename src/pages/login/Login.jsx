@@ -14,10 +14,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   var myHeaders = new Headers();
-  // myHeaders.append(
-  //   "Cookie",
-  //   "token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiJmNTE4OGZjNy0zYTAxLTRhNjMtYjczOS00NzcwYjc0NTBkZjgiLCJpYXQiOjE2ODE4NDQ1ODcsImV4cCI6MTY4MTkzMDk4N30.G3U6CNL660YCr1xxLoKJEQ1OGv9yF9HmJbjPcaeCTMU"
-  // );
+
   myHeaders.append("Content-Type", "application/json");
 
   const handleSubmit = (e) => {
