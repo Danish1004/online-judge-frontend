@@ -24,7 +24,7 @@ const Profile = (props) => {
       redirect: "follow",
     };
 
-    await fetch("https://semicolon.herokuapp.com/api/user", requestOptions)
+    await fetch(process.env.REACT_APP_BASE_URL + "/api/user", requestOptions)
       .then((response) => {
         response.json().then((value) => {
           setUserData(value);
@@ -61,11 +61,14 @@ const Profile = (props) => {
     setNumber("");
     setGender("");
 
-    const response2 = await fetch("https://semicolon.herokuapp.com/api/user", {
-      method: "POST",
-      headers: headers,
-      body: data,
-    });
+    const response2 = await fetch(
+      process.env.REACT_APP_BASE_URL + "/api/user",
+      {
+        method: "POST",
+        headers: headers,
+        body: data,
+      }
+    );
 
     fetchUserData();
     setUserData(response2);

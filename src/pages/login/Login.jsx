@@ -19,7 +19,7 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch("https://semicolon.herokuapp.com/api/auth/signin", {
+    fetch(process.env.REACT_APP_BASE_URL + "/api/auth/signin", {
       method: "POST",
       headers: myHeaders,
       body: JSON.stringify({

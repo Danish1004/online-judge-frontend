@@ -16,6 +16,7 @@ const Header = () => {
     setUsername("");
     console.clear();
     console.log("User logout successful");
+
     window.location.href = "/home"; // Redirect to home page after logout
   }
 

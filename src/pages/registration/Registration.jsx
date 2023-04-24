@@ -21,7 +21,7 @@ const Registration = () => {
 
   const handleClick = (e) => {
     e.preventDefault();
-    fetch("https://semicolon.herokuapp.com/api/auth/signup", {
+    fetch(process.env.REACT_APP_BASE_URL + "/api/auth/signup", {
       method: "POST",
       headers: myHeaders,
       body: JSON.stringify({
