@@ -35,10 +35,11 @@ const Login = () => {
           if (value.success === true) {
             localStorage.setItem("jwtToken", value.token);
             setUsername(username); // Setting the username in the state
-            Cookies.set("tokennew", value.token, { expires: 2 });
-            Cookies.set("loggedIn", "true", { expires: 2 });
+            const expiryDate = new Date(Date.now() + 3 * 60 * 60 * 1000); // Set expiry to 3 hours from now
+            Cookies.set("tokennew", value.token, { expires: expiryDate });
+            Cookies.set("loggedIn", "true", { expires: expiryDate });
             Cookies.set("userData", JSON.stringify({ username }), {
-              expires: 2,
+              expires: expiryDate,
             }); // Storing the username in the cookie
             setTimeout(() => {
               navigate("/home");
