@@ -28,6 +28,12 @@
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
   padding: 20px;
   transition: box-shadow 0.3s;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.card-left {
+  flex: 1 2;
 }
 
 .card:hover {
@@ -42,7 +48,7 @@
 
 .card-body {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 }
 
 .card-text {

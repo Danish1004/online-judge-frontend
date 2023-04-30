@@ -33,10 +33,15 @@ const Problem = () => {
 
   const Card = ({ problem }) => (
     <div className="card">
-      <h3 className="card-title">{problem.name}</h3>
-      <div className="card-body">
-        <p className="card-text">Type: {problem.tags}</p>
-        <p className="card-text">Difficulty: {problem.difficulty}</p>
+      <div className="card-left">
+        <h3 className="card-title">{problem.name}</h3>
+        <div className="card-body">
+          <p className="card-text">Type: {problem.tags}</p>
+          <p className="card-text">Difficulty: {problem.difficulty}</p>
+        </div>
+      </div>
+
+      <div className="card-button">
         <button>Solve Challenge</button>
       </div>
     </div>
