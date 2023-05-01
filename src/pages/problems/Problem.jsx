@@ -42,7 +42,7 @@ const Problem = () => {
       </div>
 
       <div className="card-button">
-        <button>Solve Challenge</button>
+        <button className="card-btn">Solve Challenge</button>
       </div>
     </div>
   );

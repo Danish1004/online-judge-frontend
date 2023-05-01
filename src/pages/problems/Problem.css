@@ -13,7 +13,7 @@
 }
 
 .problems-box {
-  width: 60%;
+  width: 50%;
   margin-top: 30px;
   margin-bottom: 30px;
   display: grid;
@@ -49,6 +49,7 @@
 .card-body {
   display: flex;
   flex-direction: row;
+  gap: 2rem;
 }
 
 .card-text {
@@ -79,4 +80,13 @@
   100% {
     opacity: 0.5;
   }
+}
+
+.card-btn {
+  border: none;
+  height: 2.5rem;
+  padding: 0 1rem;
+  background-image: linear-gradient(to right, #32be8f, #38d39f, #32be8f);
+  cursor: pointer;
+  border-radius: 20px;
 }
