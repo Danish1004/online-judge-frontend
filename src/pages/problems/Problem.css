@@ -30,6 +30,7 @@
   transition: box-shadow 0.3s;
   display: flex;
   flex-direction: row;
+  margin: 0 0 2rem 0;
   justify-content: space-between;
 }
 .card-left {

@@ -226,6 +226,7 @@ const Editor = () => {
         </div>
       </div>
       <div className="window-main">
+        <div className="problem-window">udgfisfgh</div>
         <div className="editor-window">
           <CodeWindow
             code={code}
@@ -234,24 +235,23 @@ const Editor = () => {
             theme={theme.value}
           />
         </div>
-
-        <div className="collective-main">
-          <OutputWindow outputDetails={outputDetails} />
-          <div className="input-win">
-            <CustomInput
-              customInput={customInput}
-              setCustomInput={setCustomInput}
-            />
-            <button
-              onClick={handleCompile}
-              disabled={!code}
-              className={classnames("buttons", !code ? "depth" : "")}
-            >
-              {processing ? "Processing..." : "Compile and Execute"}
-            </button>
-          </div>
-          {outputDetails && <OutputDetails outputDetails={outputDetails} />}
+      </div>
+      <div className="collective-main">
+        <OutputWindow outputDetails={outputDetails} />
+        <div className="input-win">
+          <CustomInput
+            customInput={customInput}
+            setCustomInput={setCustomInput}
+          />
+          <button
+            onClick={handleCompile}
+            disabled={!code}
+            className={classnames("buttons", !code ? "depth" : "")}
+          >
+            {processing ? "Processing..." : "Compile and Execute"}
+          </button>
         </div>
+        {outputDetails && <OutputDetails outputDetails={outputDetails} />}
       </div>
       <Footer />
     </>
