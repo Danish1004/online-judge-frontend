@@ -234,15 +234,6 @@ const Editor = () => {
             language={language?.value}
             theme={theme.value}
           />
-        </div>
-      </div>
-      <div className="collective-main">
-        <OutputWindow outputDetails={outputDetails} />
-        <div className="input-win">
-          <CustomInput
-            customInput={customInput}
-            setCustomInput={setCustomInput}
-          />
           <button
             onClick={handleCompile}
             disabled={!code}
@@ -251,6 +242,18 @@ const Editor = () => {
             {processing ? "Processing..." : "Compile and Execute"}
           </button>
         </div>
+      </div>
+      <div className="collective-main">
+        <div className="input-win">
+          <CustomInput
+            customInput={customInput}
+            setCustomInput={setCustomInput}
+          />
+        </div>
+        <div className="windows-combine">
+          <OutputWindow outputDetails={outputDetails} />
+        </div>
+
         {outputDetails && <OutputDetails outputDetails={outputDetails} />}
       </div>
       <Footer />

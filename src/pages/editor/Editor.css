@@ -38,6 +38,7 @@
   height: 80vh;
   border-radius: 5px;
   color: black;
+  overflow: auto;
 }
 .editor-window {
   display: flex;
@@ -50,13 +51,26 @@
 }
 .collective-main {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   flex-shrink: 0;
-  width: 30%;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-left: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 50%;
+}
+.windows-combine {
+  flex: 20%;
 }
 .input-win {
   display: flex;
   flex-direction: column;
+  flex: 20%;
   align-items: flex-end;
 }
 
