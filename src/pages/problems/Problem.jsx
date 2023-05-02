@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Problem.css";
 import Header from "../../components/header/Header";
+import { Link } from "react-router-dom";
 
 const Problem = () => {
   const [resp, setResp] = useState([]);
@@ -42,7 +43,9 @@ const Problem = () => {
       </div>
 
       <div className="card-button">
-        <button className="card-btn">Solve Challenge</button>
+        <button className="card-btn">
+          <Link to={`/problem/${problem.code}`}> Solve Challenge</Link>
+        </button>
       </div>
     </div>
   );

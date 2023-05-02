@@ -30,6 +30,10 @@ const router = createBrowserRouter([
     element: <Editor />,
   },
   { path: "/problem", element: <Problem /> },
+  {
+    path: "/problem/:id",
+    element: <Editor />,
+  },
 ]);
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
