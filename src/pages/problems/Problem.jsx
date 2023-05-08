@@ -31,7 +31,9 @@ const Problem = () => {
       .catch((error) => console.log("error", error));
   }, []);
   const data = resp.problem || [];
-
+  const setProblemCode = (value) => {
+    localStorage.setItem("problemCode", value);
+  };
   const Card = ({ problem }) => (
     <div className="card">
       <div className="card-left">
@@ -43,8 +45,19 @@ const Problem = () => {
       </div>
 
       <div className="card-button">
-        <button className="card-btn">
-          <Link to={`/problem/${problem.code}`}> Solve Challenge</Link>
+        <button
+          className="card-btn"
+          onClick={() => setProblemCode(problem.code)}
+        >
+          {console.log("STAte code", problem.code)}
+          <Link
+            to={{
+              pathname: `/problem/${problem.code}`,
+              state: { code: problem.code },
+            }}
+          >
+            Solve Challenge
+          </Link>
         </button>
       </div>
     </div>

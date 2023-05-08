@@ -4,7 +4,6 @@ import CodeWindow from "../../components/codewindow/CodeWindow";
 import axios from "axios";
 import { classnames } from "../../utils/general";
 import { languageOptions } from "../../constants/languageOptions";
-
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Header from "../../components/header/Header";
@@ -56,6 +55,8 @@ const Editor = () => {
   const [processing, setProcessing] = useState(null);
   const [theme, setTheme] = useState("cobalt");
   const [language, setLanguage] = useState(languageOptions[0]);
+  const [problem, setProblem] = useState(null);
+  const [resp, setResp] = useState([]);
 
   const enterPress = useKeyPress("Enter");
   const ctrlPress = useKeyPress("Control");
@@ -73,6 +74,12 @@ const Editor = () => {
       //isko dekh lena ek baar
     }
   }, [ctrlPress, enterPress]);
+  useEffect(() => {
+    setProblem(localStorage.getItem("problemCode"));
+    if (problem) {
+      console.log("problem.code", problem);
+    }
+  });
   const onChange = (action, data) => {
     switch (action) {
       case "code": {
@@ -84,6 +91,35 @@ const Editor = () => {
       }
     }
   };
+
+  //this is to get the problem data from the api
+  useEffect(() => {
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    myHeaders.append(
+      "Authorization",
+      "Bearer " + localStorage.getItem("jwtToken")
+    );
+
+    var requestOptions = {
+      method: "GET",
+      headers: myHeaders,
+      redirect: "follow",
+    };
+
+    fetch(
+      `${process.env.REACT_APP_BASE_URL}/api/admin/problem/${problem}`,
+      requestOptions
+    )
+      .then((response) => {
+        response.json().then((value) => {
+          setResp(value);
+        });
+      })
+      .then((result) => console.log(result))
+      .catch((error) => console.log("error", error));
+  }, [problem]);
+
   const handleCompile = () => {
     setProcessing(true);
     const formData = {
