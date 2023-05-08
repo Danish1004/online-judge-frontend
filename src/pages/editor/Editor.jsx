@@ -18,34 +18,10 @@ import ThemeDropDown from "../../components/themedrop/ThemeDropDown";
 import LangDrop from "../../components/langdrop/LangDrop";
 import withAuth from "../../routes/withAuth";
 
-const javascriptDefault = `/**
-* Problem: Binary Search: Search a sorted array for a target value.
-*/
+const javascriptDefault = `/*
+* write your code here*/
 
-// Time: O(log n)
-const binarySearch = (arr, target) => {
- return binarySearchHelper(arr, target, 0, arr.length - 1);
-};
 
-const binarySearchHelper = (arr, target, start, end) => {
- if (start > end) {
-   return false;
- }
- let mid = Math.floor((start + end) / 2);
- if (arr[mid] === target) {
-   return mid;
- }
- if (arr[mid] < target) {
-   return binarySearchHelper(arr, target, mid + 1, end);
- }
- if (arr[mid] > target) {
-   return binarySearchHelper(arr, target, start, mid - 1);
- }
-};
-
-const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-const target = 5;
-console.log(binarySearch(arr, target));
 `;
 
 const Editor = () => {
@@ -55,7 +31,9 @@ const Editor = () => {
   const [processing, setProcessing] = useState(null);
   const [theme, setTheme] = useState("cobalt");
   const [language, setLanguage] = useState(languageOptions[0]);
-  const [problem, setProblem] = useState(null);
+  const [problem, setProblem] = useState("");
+  const [problemCode, setProblemCode] = useState("");
+
   const [resp, setResp] = useState([]);
 
   const enterPress = useKeyPress("Enter");
@@ -74,12 +52,18 @@ const Editor = () => {
       //isko dekh lena ek baar
     }
   }, [ctrlPress, enterPress]);
+
+  useEffect(() => {
+    const problemCode = localStorage.getItem("problemCode");
+    setProblemCode(problemCode);
+  }, []);
+
   useEffect(() => {
     setProblem(localStorage.getItem("problemCode"));
-    if (problem) {
-      console.log("problem.code", problem);
+    if (problemCode) {
+      fetchData(problemCode);
     }
-  });
+  }, [problemCode]);
   const onChange = (action, data) => {
     switch (action) {
       case "code": {
@@ -93,32 +77,53 @@ const Editor = () => {
   };
 
   //this is to get the problem data from the api
-  useEffect(() => {
-    var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-    myHeaders.append(
-      "Authorization",
-      "Bearer " + localStorage.getItem("jwtToken")
-    );
+  // const fetchProblemDetails = async (problemCode) => {
+  //   try {
+  //     const response = await axios.get(
+  //       `${process.env.REACT_APP_BASE_URL}/api/admin/problem/${problemCode}`,
+  //       {
+  //         headers: {
+  //           Authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
+  //         },
+  //       }
+  //     );
+  //     setProblem(response.data);
+  //     console.log("new one", problem);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+  const fetchData = async (problemCode) => {
+    try {
+      const myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/json");
+      myHeaders.append(
+        "Authorization",
+        "Bearer " + localStorage.getItem("jwtToken")
+      );
 
-    var requestOptions = {
-      method: "GET",
-      headers: myHeaders,
-      redirect: "follow",
-    };
+      const requestOptions = {
+        method: "GET",
+        headers: myHeaders,
+        redirect: "follow",
+      };
 
-    fetch(
-      `${process.env.REACT_APP_BASE_URL}/api/admin/problem/${problem}`,
-      requestOptions
-    )
-      .then((response) => {
-        response.json().then((value) => {
-          setResp(value);
-        });
-      })
-      .then((result) => console.log(result))
-      .catch((error) => console.log("error", error));
-  }, [problem]);
+      const response = await fetch(
+        `${process.env.REACT_APP_BASE_URL}/api/admin/problem/${problemCode}`,
+        requestOptions
+      );
+      const value = await response.json();
+      if (value) {
+        setResp(value);
+        console.log("data response", value);
+        console.log(value.problem.statement);
+      } else {
+        console.log("Error: Response did not contain a JSON object.");
+      }
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
 
   const handleCompile = () => {
     setProcessing(true);
@@ -262,7 +267,16 @@ const Editor = () => {
         </div>
       </div>
       <div className="window-main">
-        <div className="problem-window">udgfisfgh</div>
+        <div className="problem-window">
+          <p>
+            <p>{value.problem.statement}</p>
+            <h4>Input Format:</h4>
+            <p>{value.problem.inputFormat}</p>
+            <h4>Output Format:</h4>
+            <p>{value.problem.outputFormat}</p>
+          </p>
+        </div>
+        {/*editor window */}
         <div className="editor-window">
           <CodeWindow
             code={code}
