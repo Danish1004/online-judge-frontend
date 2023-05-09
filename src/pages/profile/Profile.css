@@ -113,7 +113,7 @@ input {
   position: absolute;
   top: 90%;
   left: 50%;
-  width: 9rem;
+  width: 7rem;
   transform: translate(-50%, -50%);
   border-radius: 50%;
   z-index: 2;

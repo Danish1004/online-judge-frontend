@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import "./Profile.css";
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
-import banner from "../../images/banner.jpeg";
-import user from "../../images/user1.png";
+import banner from "../../images/banner.png";
+import user from "../../images/user.png";
 import withAuth from "../../routes/withAuth";
 import { BallTriangle } from "react-loader-spinner";
 

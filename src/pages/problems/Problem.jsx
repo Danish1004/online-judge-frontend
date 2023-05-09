@@ -96,10 +96,13 @@ const Problem = () => {
             <Header />
           </div>
           <div className="problems-box">
-            <div className="problems-list">
-              {data.map((problem, index) => (
-                <Card key={index} problem={problem} />
-              ))}
+            <h1 className="heading-problem">Problems</h1>
+            <div className="problems-box2">
+              <div className="problems-list">
+                {data.map((problem, index) => (
+                  <Card key={index} problem={problem} />
+                ))}
+              </div>
             </div>
           </div>
         </div>

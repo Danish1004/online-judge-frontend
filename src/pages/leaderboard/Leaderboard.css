@@ -32,7 +32,7 @@
 }
 
 .table-header {
-  background-color: #36c897;
+  background-image: linear-gradient(to right, #32be8f, #38d39f, #32be8f);
   color: #fff;
   display: flex;
   justify-content: space-between;

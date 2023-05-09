@@ -8,7 +8,6 @@ import Header from "../../components/header/Header";
 import { BallTriangle } from "react-loader-spinner";
 
 import { defineTheme } from "../../lib/defineTheme";
-import useKeyPress from "../../hooks/useKeyPress";
 import Footer from "../../components/footer/Footer";
 import ThemeDropDown from "../../components/themedrop/ThemeDropDown";
 import LangDrop from "../../components/langdrop/LangDrop";
@@ -20,9 +19,9 @@ const javascriptDefault = `/
 
 const Editor = () => {
   const [code, setCode] = useState(javascriptDefault);
-  const [processing, setProcessing] = useState(null);
   const [theme, setTheme] = useState("cobalt");
   const [language, setLanguage] = useState(languageOptions[0]);
+  //eslint-disable-next-line
   const [problem, setProblem] = useState("");
   const [problemCode, setProblemCode] = useState("");
   const [loading, setLoading] = useState(true);
@@ -30,19 +29,10 @@ const Editor = () => {
   const [resp, setResp] = useState([]);
   const [response, setResponse] = useState([]);
 
-  const enterPress = useKeyPress("Enter");
-  const ctrlPress = useKeyPress("Control");
-
   const onSelectChange = (sl) => {
     console.log("selected Option...", sl);
     setLanguage(sl);
   };
-
-  useEffect(() => {
-    if (enterPress && ctrlPress) {
-      handleCompile();
-    }
-  }, [ctrlPress, enterPress]);
 
   useEffect(() => {
     const problemCode = localStorage.getItem("problemCode");
@@ -97,10 +87,7 @@ const Editor = () => {
       console.log("error", error);
     }
   };
-  //code compiler ke liye
   const handleCompile = () => {
-    setProcessing(true);
-
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     myHeaders.append(
@@ -112,7 +99,6 @@ const Editor = () => {
       language_id: language.value,
       problem_code: problemCode,
     });
-    console.log("yeh ja raha", raw);
 
     var requestOptions = {
       method: "POST",
