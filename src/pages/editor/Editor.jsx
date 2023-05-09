@@ -1,33 +1,27 @@
 import React, { useState, useEffect } from "react";
 import "./Editor.css";
 import CodeWindow from "../../components/codewindow/CodeWindow";
-import axios from "axios";
 import { classnames } from "../../utils/general";
 import { languageOptions } from "../../constants/languageOptions";
-import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Header from "../../components/header/Header";
 
 import { defineTheme } from "../../lib/defineTheme";
 import useKeyPress from "../../hooks/useKeyPress";
 import Footer from "../../components/footer/Footer";
-import OutputWindow from "../../components/outputwindow/OutputWindow";
-import CustomInput from "../../components/custominput/CustomInput";
-import OutputDetails from "../../components/outputdetails/OutputDetails";
+// import OutputWindow from "../../components/outputwindow/OutputWindow";
+// import CustomInput from "../../components/custominput/CustomInput";
+// import OutputDetails from "../../components/outputdetails/OutputDetails";
 import ThemeDropDown from "../../components/themedrop/ThemeDropDown";
 import LangDrop from "../../components/langdrop/LangDrop";
 import withAuth from "../../routes/withAuth";
 
-const javascriptDefault = `/*
+const javascriptDefault = `/
 * write your code here*/
-
-
 `;
 
 const Editor = () => {
   const [code, setCode] = useState(javascriptDefault);
-  const [customInput, setCustomInput] = useState("");
-  const [outputDetails, setOutputDetails] = useState(null);
   const [processing, setProcessing] = useState(null);
   const [theme, setTheme] = useState("cobalt");
   const [language, setLanguage] = useState(languageOptions[0]);
@@ -35,6 +29,7 @@ const Editor = () => {
   const [problemCode, setProblemCode] = useState("");
 
   const [resp, setResp] = useState([]);
+  const [response, setResponse] = useState([]);
 
   const enterPress = useKeyPress("Enter");
   const ctrlPress = useKeyPress("Control");
@@ -46,10 +41,7 @@ const Editor = () => {
 
   useEffect(() => {
     if (enterPress && ctrlPress) {
-      console.log("enterPress", enterPress);
-      console.log("ctrlPress", ctrlPress);
-      // handleCompile();
-      //isko dekh lena ek baar
+      handleCompile();
     }
   }, [ctrlPress, enterPress]);
 
@@ -64,6 +56,7 @@ const Editor = () => {
       fetchData(problemCode);
     }
   }, [problemCode]);
+
   const onChange = (action, data) => {
     switch (action) {
       case "code": {
@@ -104,84 +97,39 @@ const Editor = () => {
       console.log("error", error);
     }
   };
-
+  //code compiler ke liye
   const handleCompile = () => {
     setProcessing(true);
-    const formData = {
-      language_id: language.id,
-      // encode source code in base64
-      source_code: btoa(code),
-      stdin: btoa(customInput),
-    };
-    const options = {
+
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    myHeaders.append(
+      "Authorization",
+      "Bearer " + localStorage.getItem("jwtToken")
+    );
+    var raw = JSON.stringify({
+      source_code: code,
+      language_id: language.value,
+      problem_code: problemCode,
+    });
+    console.log("yeh ja raha", raw);
+
+    var requestOptions = {
       method: "POST",
-      url: process.env.REACT_APP_RAPID_API_URL,
-      params: { base64_encoded: "true", fields: "*" },
-      headers: {
-        "content-type": "application/json",
-        "Content-Type": "application/json",
-        "X-RapidAPI-Host": process.env.REACT_APP_RAPID_API_HOST,
-        "X-RapidAPI-Key": process.env.REACT_APP_RAPID_API_KEY,
-      },
-      data: formData,
+      headers: myHeaders,
+      body: raw,
+      redirect: "follow",
     };
-    axios
-      .request(options)
-      .then(function (response) {
-        console.log("res.data", response.data);
-        const token = response.data.token;
-        checkStatus(token);
+    fetch(process.env.REACT_APP_BASE_URL + "/api/submission", requestOptions)
+      // .then((response) => response.text())
+      .then((response) => {
+        response.json().then((value) => {
+          setResponse(value);
+        });
       })
-      .catch((err) => {
-        let error = err.response ? err.response.data : err;
-        // get error status
-        let status = err.response.status;
-        console.log("status", status);
-        if (status === 429) {
-          console.log("too many requests", status);
-
-          showErrorToast(
-            `Quota of 100 requests exceeded for the Day! Please read the blog on freeCodeCamp to learn how to setup your own RAPID API Judge0!`,
-            10000
-          );
-        }
-        setProcessing(false);
-        console.log("catch block...", error);
-      });
-  };
-  const checkStatus = async (token) => {
-    const options = {
-      method: "GET",
-      url: process.env.REACT_APP_RAPID_API_URL + "/" + token,
-      params: { base64_encoded: "true", fields: "*" },
-      headers: {
-        "X-RapidAPI-Host": process.env.REACT_APP_RAPID_API_HOST,
-        "X-RapidAPI-Key": process.env.REACT_APP_RAPID_API_KEY,
-      },
-    };
-    try {
-      let response = await axios.request(options);
-      let statusId = response.data.status?.id;
-
-      // Processed - we have a result
-      if (statusId === 1 || statusId === 2) {
-        // still processing
-        setTimeout(() => {
-          checkStatus(token);
-        }, 2000);
-        return;
-      } else {
-        setProcessing(false);
-        setOutputDetails(response.data);
-        showSuccessToast(`Compiled Successfully!`);
-        console.log("response.data", response.data);
-        return;
-      }
-    } catch (err) {
-      console.log("err", err);
-      setProcessing(false);
-      showErrorToast();
-    }
+      // .then((result) => console.log(result))
+      .catch((error) => console.log("error", error));
+    console.log("response", response.verdict);
   };
 
   function handleThemeChange(th) {
@@ -200,41 +148,8 @@ const Editor = () => {
     );
   }, []);
 
-  const showSuccessToast = (msg) => {
-    toast.success(msg || `Compiled Successfully!`, {
-      position: "top-right",
-      autoClose: 1000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
-  };
-  const showErrorToast = (msg, timer) => {
-    toast.error(msg || `Something went wrong! Please try again.`, {
-      position: "top-right",
-      autoClose: timer ? timer : 1000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
-  };
   return (
     <>
-      <ToastContainer
-        position="top-right"
-        autoClose={2000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
       <Header />
       {/* <div className="main-head"></div> */}
       <div className="main-content">
@@ -291,28 +206,31 @@ const Editor = () => {
             language={language?.value}
             theme={theme.value}
           />
-          <button
-            onClick={handleCompile}
-            disabled={!code}
-            className={classnames("buttons", !code ? "depth" : "")}
-          >
-            {processing ? "Processing..." : "Compile and Execute"}
-          </button>
+          <div className="output-section">
+            <div className="result-section">
+              <div className="solution-result">
+                <h4 className="solution-heading-sub">Status:</h4>
+                <p>{response.verdict}</p>
+              </div>
+              <div className="solution-result">
+                <h4 className="solution-heading-sub">Time:</h4>
+                <p>{response.time}</p>
+              </div>
+              <div className="solution-result">
+                <h4 className="solution-heading-sub">Memory:</h4>
+                <p>{response.memory}</p>
+              </div>
+            </div>
+            <button
+              onClick={handleCompile}
+              disabled={!code}
+              className={classnames("buttons", !code ? "depth" : "")}
+            >
+              {"Compile and Execute"}
+            </button>
+          </div>
         </div>
       </div>
-      <div className="collective-main">
-        {/* <div className="input-win">
-          <CustomInput
-            customInput={customInput}
-            setCustomInput={setCustomInput}
-          />
-        </div>
-        <div className="windows-combine">
-          <OutputWindow outputDetails={outputDetails} />
-        </div>
-
-        {/* {outputDetails && <OutputDetails outputDetails={outputDetails} />} */}
-      </div>{" "}
       <Footer />
     </>
   );
