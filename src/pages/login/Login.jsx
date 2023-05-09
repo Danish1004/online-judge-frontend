@@ -10,7 +10,6 @@ import Cookies from "js-cookie";
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [resp, setResp] = useState("");
   const navigate = useNavigate();
 
   var myHeaders = new Headers();
@@ -31,20 +30,21 @@ const Login = () => {
       .then((response) => {
         response.json().then((value) => {
           console.log(value.message);
-          setResp(value.message);
           if (value.success === true) {
             localStorage.setItem("jwtToken", value.token);
-            setUsername(username); // Setting the username in the state
-            const expiryDate = new Date(Date.now() + 3 * 60 * 60 * 1000); // Set expiry to 3 hours from now
+            setUsername(username);
+            const expiryDate = new Date(Date.now() + 3 * 60 * 60 * 1000);
             Cookies.set("tokennew", value.token, { expires: expiryDate });
             Cookies.set("loggedIn", "true", { expires: expiryDate });
             Cookies.set("userData", JSON.stringify({ username }), {
               expires: expiryDate,
-            }); // Storing the username in the cookie
+            });
             setTimeout(() => {
               navigate("/home");
             }, 500);
             console.log(`Logged in as ${username}`);
+          } else {
+            alert(value.message);
           }
         });
       })
@@ -52,7 +52,6 @@ const Login = () => {
         console.log(error);
       });
   };
-
   return (
     <div>
       <Header />
@@ -97,9 +96,6 @@ const Login = () => {
                 </div>
               </form>
             </div>
-          </div>
-          <div className="line">
-            <h5 className="response-line"> {resp} </h5>
           </div>
         </div>
       </div>

@@ -2,12 +2,12 @@ export const customStyles = {
   control: (styles) => ({
     ...styles,
     width: "100%",
-    maxWidth: "14rem",
-    minWidth: "12rem",
+    maxWidth: "12rem",
+    minWidth: "10rem",
     borderRadius: "5px",
     color: "#000",
     fontSize: "0.8rem",
-    lineHeight: "1.75rem",
+    lineHeight: "1.25rem",
     backgroundColor: "#FFFFFF",
     cursor: "pointer",
     border: "2px solid #000000",
@@ -22,7 +22,7 @@ export const customStyles = {
       ...styles,
       color: "#000",
       fontSize: "0.8rem",
-      lineHeight: "1.75rem",
+      lineHeight: "1.25rem",
       width: "100%",
       background: "#fff",
       ":hover": {
@@ -36,7 +36,7 @@ export const customStyles = {
     return {
       ...styles,
       backgroundColor: "#fff",
-      maxWidth: "14rem",
+      maxWidth: "12rem",
       border: "2px solid #000000",
       borderRadius: "5px",
       boxShadow: "5px 5px 0px 0px rgba(0,0,0);",
@@ -48,7 +48,7 @@ export const customStyles = {
       ...defaultStyles,
       color: "#000",
       fontSize: "0.8rem",
-      lineHeight: "1.75rem",
+      lineHeight: "1.25rem",
     };
   },
 };

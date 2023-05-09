@@ -51,12 +51,6 @@ const Header = () => {
             </li>
 
             <li className="nav_item">
-              <Link to="/editor" className="nav_link">
-                <i className="uil uil-user nav_icon"></i> Editor
-              </Link>
-            </li>
-
-            <li className="nav_item">
               <Link to="/home" className="nav_link">
                 <i className="uil uil-file-alt nav_icon"></i> Leaderboard
               </Link>
