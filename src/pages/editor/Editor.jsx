@@ -75,24 +75,6 @@ const Editor = () => {
       }
     }
   };
-
-  //this is to get the problem data from the api
-  // const fetchProblemDetails = async (problemCode) => {
-  //   try {
-  //     const response = await axios.get(
-  //       `${process.env.REACT_APP_BASE_URL}/api/admin/problem/${problemCode}`,
-  //       {
-  //         headers: {
-  //           Authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
-  //         },
-  //       }
-  //     );
-  //     setProblem(response.data);
-  //     console.log("new one", problem);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
   const fetchData = async (problemCode) => {
     try {
       const myHeaders = new Headers();
@@ -115,8 +97,6 @@ const Editor = () => {
       const value = await response.json();
       if (value) {
         setResp(value);
-        console.log("data response", value);
-        console.log(value.problem.statement);
       } else {
         console.log("Error: Response did not contain a JSON object.");
       }
@@ -256,7 +236,6 @@ const Editor = () => {
         pauseOnHover
       />
       <Header />
-
       {/* <div className="main-head"></div> */}
       <div className="main-content">
         <div className="first-row">
@@ -268,13 +247,41 @@ const Editor = () => {
       </div>
       <div className="window-main">
         <div className="problem-window">
-          <p>
-            <p>{value.problem.statement}</p>
-            <h4>Input Format:</h4>
-            <p>{value.problem.inputFormat}</p>
-            <h4>Output Format:</h4>
-            <p>{value.problem.outputFormat}</p>
-          </p>
+          <div
+            className="problem-text"
+            dangerouslySetInnerHTML={{ __html: resp?.problem?.statement }}
+          />
+
+          <h3 className="problem-heading-sub">Input Format:</h3>
+          <div
+            className="problem-text"
+            dangerouslySetInnerHTML={{ __html: resp?.problem?.inputFormat }}
+          />
+          <h3 className="problem-heading-sub">Output Format:</h3>
+          <div
+            className="problem-text"
+            dangerouslySetInnerHTML={{ __html: resp?.problem?.outputFormat }}
+          />
+          <h3 className="problem-heading-sub">Constraints:</h3>
+          <div
+            className="problem-text"
+            dangerouslySetInnerHTML={{ __html: resp?.problem?.constraints }}
+          />
+          <h3 className="problem-heading-sub">Explanation:</h3>
+          <div
+            className="problem-text"
+            dangerouslySetInnerHTML={{ __html: resp?.problem?.explanation }}
+          />
+          <h4 className="problem-heading-sub">Time Limit:</h4>
+          <div
+            className="problem-text"
+            dangerouslySetInnerHTML={{ __html: resp?.problem?.timeLimit }}
+          />
+          <h4 className="problem-heading-sub">Memory Limit:</h4>
+          <div
+            className="problem-text"
+            dangerouslySetInnerHTML={{ __html: resp?.problem?.memoryLimit }}
+          />
         </div>
         {/*editor window */}
         <div className="editor-window">
@@ -294,7 +301,7 @@ const Editor = () => {
         </div>
       </div>
       <div className="collective-main">
-        <div className="input-win">
+        {/* <div className="input-win">
           <CustomInput
             customInput={customInput}
             setCustomInput={setCustomInput}
@@ -304,8 +311,8 @@ const Editor = () => {
           <OutputWindow outputDetails={outputDetails} />
         </div>
 
-        {outputDetails && <OutputDetails outputDetails={outputDetails} />}
-      </div>
+        {/* {outputDetails && <OutputDetails outputDetails={outputDetails} />} */}
+      </div>{" "}
       <Footer />
     </>
   );

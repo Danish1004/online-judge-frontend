@@ -39,6 +39,13 @@
   border-radius: 5px;
   color: black;
   overflow: auto;
+  padding: 1.3rem;
+}
+.problem-text {
+  font-weight: var(--font-normal);
+}
+.problem-heading-sub {
+  margin-top: 10px;
 }
 .editor-window {
   display: flex;

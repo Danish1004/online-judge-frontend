@@ -1,28 +1,10 @@
+// {
+//   /* <option value="53">C++</option>
+// <option value="62">Java</option>
+// <option value="70">Python</option> */
+// }
+
 export const languageOptions = [
-  {
-    id: 63,
-    name: "JavaScript (Node.js 12.14.0)",
-    label: "JavaScript (Node.js 12.14.0)",
-    value: "javascript",
-  },
-  {
-    id: 45,
-    name: "Assembly (NASM 2.14.02)",
-    label: "Assembly (NASM 2.14.02)",
-    value: "assembly",
-  },
-  {
-    id: 46,
-    name: "Bash (5.0.0)",
-    label: "Bash (5.0.0)",
-    value: "bash",
-  },
-  {
-    id: 47,
-    name: "Basic (FBC 1.07.1)",
-    label: "Basic (FBC 1.07.1)",
-    value: "basic",
-  },
   {
     id: 75,
     name: "C (Clang 7.0.1)",
