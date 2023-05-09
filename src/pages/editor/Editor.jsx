@@ -5,13 +5,11 @@ import { classnames } from "../../utils/general";
 import { languageOptions } from "../../constants/languageOptions";
 import "react-toastify/dist/ReactToastify.css";
 import Header from "../../components/header/Header";
+import { BallTriangle } from "react-loader-spinner";
 
 import { defineTheme } from "../../lib/defineTheme";
 import useKeyPress from "../../hooks/useKeyPress";
 import Footer from "../../components/footer/Footer";
-// import OutputWindow from "../../components/outputwindow/OutputWindow";
-// import CustomInput from "../../components/custominput/CustomInput";
-// import OutputDetails from "../../components/outputdetails/OutputDetails";
 import ThemeDropDown from "../../components/themedrop/ThemeDropDown";
 import LangDrop from "../../components/langdrop/LangDrop";
 import withAuth from "../../routes/withAuth";
@@ -27,6 +25,7 @@ const Editor = () => {
   const [language, setLanguage] = useState(languageOptions[0]);
   const [problem, setProblem] = useState("");
   const [problemCode, setProblemCode] = useState("");
+  const [loading, setLoading] = useState(true);
 
   const [resp, setResp] = useState([]);
   const [response, setResponse] = useState([]);
@@ -90,6 +89,7 @@ const Editor = () => {
       const value = await response.json();
       if (value) {
         setResp(value);
+        setLoading(false);
       } else {
         console.log("Error: Response did not contain a JSON object.");
       }
@@ -121,13 +121,11 @@ const Editor = () => {
       redirect: "follow",
     };
     fetch(process.env.REACT_APP_BASE_URL + "/api/submission", requestOptions)
-      // .then((response) => response.text())
       .then((response) => {
         response.json().then((value) => {
           setResponse(value);
         });
       })
-      // .then((result) => console.log(result))
       .catch((error) => console.log("error", error));
     console.log("response", response.verdict);
   };
@@ -150,88 +148,107 @@ const Editor = () => {
 
   return (
     <>
-      <Header />
-      {/* <div className="main-head"></div> */}
-      <div className="main-content">
-        <div className="first-row">
-          <LangDrop onSelectChange={onSelectChange} />
-        </div>
-        <div className="first-row">
-          <ThemeDropDown handleThemeChange={handleThemeChange} theme={theme} />
-        </div>
-      </div>
-      <div className="window-main">
-        <div className="problem-window">
-          <div
-            className="problem-text"
-            dangerouslySetInnerHTML={{ __html: resp?.problem?.statement }}
+      {loading && (
+        <div className="loading-spinner">
+          <BallTriangle
+            height={100}
+            width={100}
+            radius={5}
+            color="#4fa94d"
+            ariaLabel="ball-triangle-loading"
           />
+        </div>
+      )}
+      {!loading && (
+        <div>
+          <Header />
+          <div className="main-content">
+            <div className="first-row">
+              <LangDrop onSelectChange={onSelectChange} />
+            </div>
+            <div className="first-row">
+              <ThemeDropDown
+                handleThemeChange={handleThemeChange}
+                theme={theme}
+              />
+            </div>
+          </div>
+          <div className="window-main">
+            <div className="problem-window">
+              <div
+                className="problem-text"
+                dangerouslySetInnerHTML={{ __html: resp?.problem?.statement }}
+              />
 
-          <h3 className="problem-heading-sub">Input Format:</h3>
-          <div
-            className="problem-text"
-            dangerouslySetInnerHTML={{ __html: resp?.problem?.inputFormat }}
-          />
-          <h3 className="problem-heading-sub">Output Format:</h3>
-          <div
-            className="problem-text"
-            dangerouslySetInnerHTML={{ __html: resp?.problem?.outputFormat }}
-          />
-          <h3 className="problem-heading-sub">Constraints:</h3>
-          <div
-            className="problem-text"
-            dangerouslySetInnerHTML={{ __html: resp?.problem?.constraints }}
-          />
-          <h3 className="problem-heading-sub">Explanation:</h3>
-          <div
-            className="problem-text"
-            dangerouslySetInnerHTML={{ __html: resp?.problem?.explanation }}
-          />
-          <h4 className="problem-heading-sub">Time Limit:</h4>
-          <div
-            className="problem-text"
-            dangerouslySetInnerHTML={{ __html: resp?.problem?.timeLimit }}
-          />
-          <h4 className="problem-heading-sub">Memory Limit:</h4>
-          <div
-            className="problem-text"
-            dangerouslySetInnerHTML={{ __html: resp?.problem?.memoryLimit }}
-          />
-        </div>
-        {/*editor window */}
-        <div className="editor-window">
-          <CodeWindow
-            code={code}
-            onChange={onChange}
-            language={language?.value}
-            theme={theme.value}
-          />
-          <div className="output-section">
-            <div className="result-section">
-              <div className="solution-result">
-                <h4 className="solution-heading-sub">Status:</h4>
-                <p>{response.verdict}</p>
-              </div>
-              <div className="solution-result">
-                <h4 className="solution-heading-sub">Time:</h4>
-                <p>{response.time}</p>
-              </div>
-              <div className="solution-result">
-                <h4 className="solution-heading-sub">Memory:</h4>
-                <p>{response.memory}</p>
+              <h3 className="problem-heading-sub">Input Format:</h3>
+              <div
+                className="problem-text"
+                dangerouslySetInnerHTML={{ __html: resp?.problem?.inputFormat }}
+              />
+              <h3 className="problem-heading-sub">Output Format:</h3>
+              <div
+                className="problem-text"
+                dangerouslySetInnerHTML={{
+                  __html: resp?.problem?.outputFormat,
+                }}
+              />
+              <h3 className="problem-heading-sub">Constraints:</h3>
+              <div
+                className="problem-text"
+                dangerouslySetInnerHTML={{ __html: resp?.problem?.constraints }}
+              />
+              <h3 className="problem-heading-sub">Explanation:</h3>
+              <div
+                className="problem-text"
+                dangerouslySetInnerHTML={{ __html: resp?.problem?.explanation }}
+              />
+              <h4 className="problem-heading-sub">Time Limit:</h4>
+              <div
+                className="problem-text"
+                dangerouslySetInnerHTML={{ __html: resp?.problem?.timeLimit }}
+              />
+              <h4 className="problem-heading-sub">Memory Limit:</h4>
+              <div
+                className="problem-text"
+                dangerouslySetInnerHTML={{ __html: resp?.problem?.memoryLimit }}
+              />
+            </div>
+            {/*editor window */}
+            <div className="editor-window">
+              <CodeWindow
+                code={code}
+                onChange={onChange}
+                language={language?.value}
+                theme={theme.value}
+              />
+              <div className="output-section">
+                <div className="result-section">
+                  <div className="solution-result">
+                    <h4 className="solution-heading-sub">Status:</h4>
+                    <p>{response.verdict}</p>
+                  </div>
+                  <div className="solution-result">
+                    <h4 className="solution-heading-sub">Time:</h4>
+                    <p>{response.time}</p>
+                  </div>
+                  <div className="solution-result">
+                    <h4 className="solution-heading-sub">Memory:</h4>
+                    <p>{response.memory}</p>
+                  </div>
+                </div>
+                <button
+                  onClick={handleCompile}
+                  disabled={!code}
+                  className={classnames("buttons", !code ? "depth" : "")}
+                >
+                  {"Compile and Execute"}
+                </button>
               </div>
             </div>
-            <button
-              onClick={handleCompile}
-              disabled={!code}
-              className={classnames("buttons", !code ? "depth" : "")}
-            >
-              {"Compile and Execute"}
-            </button>
           </div>
+          <Footer />
         </div>
-      </div>
-      <Footer />
+      )}
     </>
   );
 };

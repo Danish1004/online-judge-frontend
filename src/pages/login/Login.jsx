@@ -33,15 +33,12 @@ const Login = () => {
           if (value.success === true) {
             localStorage.setItem("jwtToken", value.token);
             setUsername(username);
-            const expiryDate = new Date(Date.now() + 3 * 60 * 60 * 1000);
-            Cookies.set("tokennew", value.token, { expires: expiryDate });
-            Cookies.set("loggedIn", "true", { expires: expiryDate });
-            Cookies.set("userData", JSON.stringify({ username }), {
-              expires: expiryDate,
-            });
+            Cookies.set("tokennew", value.token);
+            Cookies.set("loggedIn", "true");
+            Cookies.set("userData", JSON.stringify({ username }));
             setTimeout(() => {
               navigate("/home");
-            }, 500);
+            }, 1000);
             console.log(`Logged in as ${username}`);
           } else {
             alert(value.message);

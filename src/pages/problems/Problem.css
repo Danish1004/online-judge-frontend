@@ -13,7 +13,7 @@
 }
 
 .problems-box {
-  width: 50%;
+  /* width: 50%; */
   margin-top: 30px;
   margin-bottom: 30px;
   display: grid;
@@ -42,20 +42,31 @@
 }
 
 .card-title {
-  font-size: 18px;
   font-weight: 600;
   margin-bottom: 10px;
+}
+.headings-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+}
+.heading-main-card {
+  font-weight: var(--font-bold);
 }
 
 .card-body {
   display: flex;
   flex-direction: row;
   gap: 2rem;
+  justify-content: space-between;
+  padding: 0 5px 0 0;
 }
 
 .card-text {
-  font-size: 14px;
+  font-size: 15px;
   margin-bottom: 5px;
+  font-weight: var(--font-medium);
 }
 
 .card-text:last-child {

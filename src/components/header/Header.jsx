@@ -10,8 +10,9 @@ const Header = () => {
   const navigate = useNavigate();
 
   function handleLogout() {
+    localStorage.removeItem("jwtToken"); // Remove the token when the user logs out
     Cookies.remove("loggedIn");
-    Cookies.remove("userData"); // Remove the cookie when the user logs out
+    Cookies.remove("userData");
     setLoggedIn(false);
     setUsername("");
     console.clear();
@@ -51,7 +52,7 @@ const Header = () => {
             </li>
 
             <li className="nav_item">
-              <Link to="/home" className="nav_link">
+              <Link to="/leaderboard" className="nav_link">
                 <i className="uil uil-file-alt nav_icon"></i> Leaderboard
               </Link>
             </li>

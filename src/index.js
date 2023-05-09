@@ -8,6 +8,7 @@ import Profile from "./pages/profile/Profile";
 import Login from "./pages/login/Login";
 import Editor from "./pages/editor/Editor";
 import Problem from "./pages/problems/Problem";
+import Leaderboard from "./pages/leaderboard/Leaderboard";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
   {
     path: "/profile",
     element: <Profile />,
+  },
+  {
+    path: "/leaderboard",
+    element: <Leaderboard />,
   },
   {
     path: "/login",
@@ -36,6 +41,7 @@ const router = createBrowserRouter([
   },
 ]);
 const root = ReactDOM.createRoot(document.getElementById("root"));
+
 root.render(
   <React.StrictMode>
     <RouterProvider router={router} />

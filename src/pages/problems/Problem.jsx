@@ -2,9 +2,13 @@ import React, { useState, useEffect } from "react";
 import "./Problem.css";
 import Header from "../../components/header/Header";
 import { Link } from "react-router-dom";
+import withAuth from "../../routes/withAuth";
+
+import { BallTriangle } from "react-loader-spinner";
 
 const Problem = () => {
   const [resp, setResp] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     var myHeaders = new Headers();
@@ -26,20 +30,30 @@ const Problem = () => {
       .then((response) => {
         response.json().then((value) => {
           setResp(value);
+          setLoading(false);
         });
       })
       .catch((error) => console.log("error", error));
   }, []);
+
   const data = resp.problem || [];
+
   const setProblemCode = (value) => {
     localStorage.setItem("problemCode", value);
   };
+
   const Card = ({ problem }) => (
     <div className="card">
       <div className="card-left">
         <h3 className="card-title">{problem.name}</h3>
         <div className="card-body">
-          <p className="card-text">Type: {problem.tags}</p>
+          <div className="headings-card">
+            <p className="heading-main-card">Tags:</p>
+            {Array.isArray(problem.tags) && (
+              <p className="card-text">{problem.tags.join(", ")}</p>
+            )}
+          </div>
+
           <p className="card-text">Difficulty: {problem.difficulty}</p>
         </div>
       </div>
@@ -65,18 +79,32 @@ const Problem = () => {
 
   return (
     <div className="main-problems">
-      <div className="problem-header">
-        <Header />
-      </div>
-      <div className="problems-box">
-        <div className="problems-list">
-          {data.map((problem, index) => (
-            <Card key={index} problem={problem} />
-          ))}
+      {loading && (
+        <div className="loading-spinner">
+          <BallTriangle
+            height={100}
+            width={100}
+            radius={5}
+            color="#4fa94d"
+            ariaLabel="ball-triangle-loading"
+          />
         </div>
-      </div>
+      )}
+      {!loading && (
+        <div>
+          <div className="problem-header">
+            <Header />
+          </div>
+          <div className="problems-box">
+            <div className="problems-list">
+              {data.map((problem, index) => (
+                <Card key={index} problem={problem} />
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
-
-export default Problem;
+export default withAuth(Problem);
