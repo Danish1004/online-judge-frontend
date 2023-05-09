@@ -38,7 +38,7 @@ const Home = () => {
                 <div className="grid-item">
                   <div className="about_info">
                     <h2>Join a Room</h2>
-                    <p className="p1">
+                    <p>
                       Join or create a room, invite your friends, and get ready
                       to solve problems together.
                     </p>
@@ -81,7 +81,7 @@ const Home = () => {
               <div className="question_parts">
                 <h3>What is semicolon?</h3>
                 <p>
-                  binarysearch is a free site where you can work on coding and
+                  semicolon is a free site where you can work on coding and
                   algorithms problems together with others.
                 </p>
               </div>
@@ -108,17 +108,6 @@ const Home = () => {
                   There are standard algorithms and data structures questions
                   that you can expect from major tech companies such as Google,
                   Microsoft, Facebook, and Amazon.
-                </p>
-              </div>
-
-              <div className="question_parts">
-                <h3>Who are you?</h3>
-                <p>
-                  Hi! We're Lawrence and Jae, two engineers from Canada. We want
-                  to make learning algorithms more accessible. We got the idea
-                  for binarysearch from having had to prepare for interviews at
-                  many tech companies. We found that by working on problems with
-                  friends we had a lot of fun and learned faster.
                 </p>
               </div>
 
