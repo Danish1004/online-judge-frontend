@@ -9,11 +9,12 @@ const Home = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
+    const debounceTimer = setTimeout(() => {
       setLoading(false);
     }, 2000);
-    return () => clearTimeout(timer);
+    return () => clearTimeout(debounceTimer);
   }, []);
+
   return (
     <div className="main-page">
       {loading && (
