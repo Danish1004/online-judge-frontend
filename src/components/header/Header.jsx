@@ -61,7 +61,7 @@ const Header = () => {
 
             <li className="nav_item">
               <Link to="/profile" className="nav_link">
-                Profile
+                <i className="uil uil-user nav_icon"></i> Profile
               </Link>
             </li>
           </ul>

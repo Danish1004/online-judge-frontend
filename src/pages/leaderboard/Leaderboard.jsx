@@ -38,7 +38,7 @@ function Leaderboard() {
   }, []);
 
   return (
-    <div>
+    <div className="resp-set">
       {loading && (
         <div className="loading-spinner">
           <BallTriangle

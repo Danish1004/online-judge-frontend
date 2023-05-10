@@ -152,6 +152,9 @@ const Editor = () => {
       {!loading && (
         <div>
           <Header />
+          <div class="desktop-view-only">
+            This page can only be accessed in desktop view.
+          </div>
           <div className="main-content">
             <div className="first-row">
               <LangDrop onSelectChange={onSelectChange} />

@@ -153,3 +153,29 @@
 .depth {
   opacity: 0.5;
 }
+.desktop-view-only {
+  display: none; /* hide by default */
+}
+
+@media screen and (max-width: 1260px), (max-width: 768px) {
+  /* show the element when the screen size is smaller than 1132px or 768px */
+  .desktop-view-only {
+    display: block;
+    height: 100vh;
+    margin: 5rem;
+    text-align: center;
+    padding: 5rem;
+  }
+  .main-content {
+    display: none;
+  }
+  .window-main {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 389px) {
+  .desktop-view-only {
+    padding: 0;
+  }
+}

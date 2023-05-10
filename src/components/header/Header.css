@@ -119,8 +119,20 @@
     margin-left: auto;
   }
 }
+@media screen and (max-width: 510px) {
+  .nav_menu {
+    padding: 2rem 0.25rem 4rem;
+  }
+  .nav_list {
+    column-gap: 1rem;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .nav_username {
+    margin-top: 0.5rem;
+  }
+}
 
-@media screen and(max-width:350px) {
+@media screen and (max-width: 350px) {
   .nav_menu {
     padding: 2rem 0.25rem 4rem;
   }
