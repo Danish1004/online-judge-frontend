@@ -167,7 +167,7 @@
     height: auto;
   }
   .heading-main-card {
-    font-weight: var(--font-normal);
+    font-weight: var(--font-medium);
   }
   .problem-header {
     padding: 2rem 0 0 1rem;
@@ -176,17 +176,19 @@
   .heading-problem {
     padding: 2rem 0 0 1rem;
     font-size: 1.5rem;
+    font-weight: 400;
     text-align: center;
   }
 
   .card-title {
     font-size: 1.5rem;
+    font-weight: 300;
   }
 
   .card-text {
     font-size: 13px;
+    font-weight: 300;
     margin-bottom: 5px;
-    font-weight: var(--font-heading-light);
   }
 
   .card-btn {
