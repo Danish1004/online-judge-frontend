@@ -25,6 +25,15 @@
   padding-left: 1rem;
   padding-right: 1rem;
 }
+.accepted {
+  color: green;
+  font-weight: var(--font-semi-bold);
+}
+
+.rejected {
+  color: red;
+  font-weight: var(--font-semi-bold);
+}
 .window-main {
   display: flex;
   flex-direction: row;
@@ -114,6 +123,11 @@
   background-color: #ffffff;
   width: 30rem;
   height: 5rem;
+}
+.result-loading {
+  width: 11rem;
+  display: flex;
+  justify-content: center;
 }
 
 .buttons {

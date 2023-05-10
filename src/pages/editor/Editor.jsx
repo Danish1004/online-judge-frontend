@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./Editor.css";
-import CodeWindow from "../../components/codewindow/CodeWindow";
 import { classnames } from "../../utils/general";
+
+import CodeWindow from "../../components/codewindow/CodeWindow";
 import { languageOptions } from "../../constants/languageOptions";
 import "react-toastify/dist/ReactToastify.css";
 import Header from "../../components/header/Header";
@@ -25,9 +26,9 @@ const Editor = () => {
   const [problem, setProblem] = useState("");
   const [problemCode, setProblemCode] = useState("");
   const [loading, setLoading] = useState(true);
-
   const [resp, setResp] = useState([]);
   const [response, setResponse] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const onSelectChange = (sl) => {
     console.log("selected Option...", sl);
@@ -88,6 +89,8 @@ const Editor = () => {
     }
   };
   const handleCompile = () => {
+    setIsLoading(true);
+
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     myHeaders.append(
@@ -110,6 +113,7 @@ const Editor = () => {
       .then((response) => {
         response.json().then((value) => {
           setResponse(value);
+          setIsLoading(false);
         });
       })
       .catch((error) => console.log("error", error));
@@ -211,7 +215,15 @@ const Editor = () => {
                 <div className="result-section">
                   <div className="solution-result">
                     <h4 className="solution-heading-sub">Status:</h4>
-                    <p>{response.verdict}</p>
+                    <p
+                      className={
+                        response.verdict === "Accepted"
+                          ? "accepted"
+                          : "rejected"
+                      }
+                    >
+                      {response.verdict}
+                    </p>
                   </div>
                   <div className="solution-result">
                     <h4 className="solution-heading-sub">Time:</h4>
@@ -223,11 +235,23 @@ const Editor = () => {
                   </div>
                 </div>
                 <button
-                  onClick={handleCompile}
-                  disabled={!code}
                   className={classnames("buttons", !code ? "depth" : "")}
+                  onClick={handleCompile}
+                  disabled={isLoading}
                 >
-                  {"Compile and Execute"}
+                  {isLoading ? (
+                    <div className="result-loading">
+                      <BallTriangle
+                        height={40}
+                        width={40}
+                        radius={6}
+                        color="#4fa94d"
+                        ariaLabel="ball-triangle-loading"
+                      />
+                    </div>
+                  ) : (
+                    "Compile and Execute"
+                  )}
                 </button>
               </div>
             </div>
