@@ -97,7 +97,7 @@ const Profile = (props) => {
           <div className="main-box">
             <div className="profile-content">
               <form className="info-card" onSubmit={handleInputChange}>
-                <h2>General Information</h2>
+                <h2 className="profile-head">General Information</h2>
                 <div className="heading-1">
                   <div className="sub-head">
                     <h5 className="sub-info">Name</h5>
@@ -158,32 +158,40 @@ const Profile = (props) => {
                 </div>
                 <div className="user-info">
                   <div className="sub-section1">
-                    <h2>{userData?.profile?.name}</h2>
+                    <h2 className="profile-name">{userData?.profile?.name}</h2>
                   </div>
                   <div className="sub-section2">
                     <div className="title-bar">
                       <div className="info-bar">
-                        <h4>Username</h4>
+                        <h4 className="sub-info-head">Username</h4>
                         <div className="information">
-                          <h4>{userData?.profile?.username}</h4>
+                          <h4 className="sub-info-head">
+                            {userData?.profile?.username}
+                          </h4>
                         </div>
                       </div>
                       <div className="info-bar">
-                        <h4>Email</h4>
+                        <h4 className="sub-info-head">Email</h4>
                         <div className="information">
-                          <h4>{userData?.profile?.email}</h4>
+                          <h4 className="sub-info-head">
+                            {userData?.profile?.email}
+                          </h4>
                         </div>
                       </div>
                       <div className="info-bar">
-                        <h4>Phone Number</h4>
+                        <h4 className="sub-info-head">Phone Number</h4>
                         <div className="information">
-                          <h4>{userData?.profile?.contact_number}</h4>
+                          <h4 className="sub-info-head">
+                            {userData?.profile?.contact_number}
+                          </h4>
                         </div>
                       </div>
                       <div className="info-bar">
-                        <h4>Gender</h4>
+                        <h4 className="sub-info-head">Gender</h4>
                         <div className="information">
-                          <h4>{userData?.profile?.gender}</h4>
+                          <h4 className="sub-info-head">
+                            {userData?.profile?.gender}
+                          </h4>
                         </div>
                       </div>
                     </div>

@@ -184,6 +184,9 @@ input {
   .sub-section2 {
     padding: 0 0 1rem 1rem;
   }
+  .input {
+    font-size: small;
+  }
 }
 
 @media (max-width: 905px) {
@@ -205,6 +208,19 @@ input {
   .btn-2 {
     width: 100%;
   }
+  .profile-head {
+    font-weight: 400;
+    font-size: 1.5rem;
+  }
+  .sub-info {
+    font-weight: 300;
+  }
+  .input {
+    font-size: small;
+  }
+  .profile-name {
+    font-weight: 300;
+  }
 }
 @media (max-width: 650px) {
   .main {
@@ -215,6 +231,22 @@ input {
     display: flex;
     flex-direction: column;
     text-align: start;
+  }
+  .profile-head {
+    font-weight: 400;
+    font-size: 1.5rem;
+  }
+  .sub-info {
+    font-weight: 300;
+  }
+  .input {
+    font-size: small;
+  }
+  .profile-name {
+    font-weight: 300;
+  }
+  .sub-info-head {
+    font-weight: 300;
   }
 }
 @media (max-width: 586px) {
@@ -229,6 +261,10 @@ input {
     margin: auto;
     width: 96%;
   }
+  .profile-head {
+    font-weight: 400;
+    font-size: 1.5rem;
+  }
   .profile-content {
     flex-direction: column-reverse;
     height: auto;
@@ -236,5 +272,17 @@ input {
   .details-card {
     margin-top: 2rem;
     flex: 1;
+  }
+  .sub-info {
+    font-weight: 300;
+  }
+  .input {
+    font-size: small;
+  }
+  .profile-name {
+    font-weight: 300;
+  }
+  .sub-info-head {
+    font-weight: 300;
   }
 }
