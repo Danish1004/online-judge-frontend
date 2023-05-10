@@ -7,6 +7,8 @@ const Header = () => {
   const [Toggle, ShowMenu] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
   const [username, setUsername] = useState("");
+  const [showDropdown, setShowDropdown] = useState(false);
+
   const navigate = useNavigate();
 
   function handleLogout() {
@@ -68,8 +70,20 @@ const Header = () => {
             <ul>
               {loggedIn ? (
                 <li>
-                  Hi, {username}
-                  <button onClick={handleLogout}>Logout</button>
+                  <div
+                    className="dropdown"
+                    onMouseEnter={() => setShowDropdown(true)}
+                    onMouseLeave={() => setShowDropdown(false)}
+                  >
+                    <span>
+                      Hi, {username} <i className="uil uil-angle-down"></i>
+                    </span>
+                    {showDropdown && (
+                      <div className="dropdown-content">
+                        <button onClick={handleLogout}>Logout</button>
+                      </div>
+                    )}
+                  </div>
                 </li>
               ) : (
                 <li>
