@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import "./Leaderboard.css";
 import withAuth from "../../routes/withAuth";
 import Header from "../../components/header/Header";
-import Footer from "../../components/footer/Footer";
 import { BallTriangle } from "react-loader-spinner";
 
 function Leaderboard() {
@@ -80,7 +79,6 @@ function Leaderboard() {
               </ul>
             </div>
           </div>
-          <Footer />
         </div>
       )}
     </div>

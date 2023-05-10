@@ -133,7 +133,7 @@ input {
   display: flex;
   flex-direction: row;
   gap: 1rem;
-  padding: 0 0 0 1rem;
+  padding: 0 1rem 0 1rem;
 }
 .parts {
   display: flex;
@@ -152,4 +152,89 @@ input {
 }
 .information {
   font-weight: var(--font-normal);
+  color: #ffffff;
+}
+.info-bar {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 1107px) {
+  .main {
+    height: auto;
+    margin: 2rem 0 6rem 0;
+  }
+  .main-box {
+    margin: 2rem 0 0 0;
+    padding: 2rem 1rem 0 1rem;
+    height: auto;
+    margin: 3rem auto;
+    width: 70%;
+  }
+  .profile-content {
+    flex-direction: column-reverse;
+    height: auto;
+  }
+  .details-card {
+    margin-top: 2rem;
+    flex: 1;
+  }
+  .sub-section2 {
+    padding: 0 0 1rem 1rem;
+  }
+}
+
+@media (max-width: 905px) {
+  .main-box {
+    margin: 2rem 0 0 0;
+    padding: 2rem 0 0 0;
+    height: auto;
+    margin: auto;
+    width: 70%;
+  }
+  .profile-content {
+    flex-direction: column-reverse;
+    height: auto;
+  }
+  .details-card {
+    margin-top: 2rem;
+    flex: 1;
+  }
+  .btn-2 {
+    width: 100%;
+  }
+}
+@media (max-width: 650px) {
+  .main {
+    height: auto;
+    margin-bottom: 5rem;
+  }
+  .info-bar {
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+  }
+}
+@media (max-width: 586px) {
+  .main {
+    height: auto;
+    margin-bottom: 5rem;
+  }
+  .main-box {
+    margin: 2rem 0 0 0;
+    padding: 2rem 0 0 0;
+    height: auto;
+    margin: auto;
+    width: 96%;
+  }
+  .profile-content {
+    flex-direction: column-reverse;
+    height: auto;
+  }
+  .details-card {
+    margin-top: 2rem;
+    flex: 1;
+  }
 }

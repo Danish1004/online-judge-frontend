@@ -116,6 +116,9 @@
   }
 } */
 @media only screen and (max-width: 814px) {
+  .main-problems {
+    height: auto;
+  }
   .heading-problem {
     padding: 4rem 0 0 1rem;
     font-size: 2rem;
@@ -152,6 +155,9 @@
 }
 
 @media only screen and (max-width: 480px) {
+  .main-problems {
+    height: auto;
+  }
   .problem-header {
     padding: 2rem 0 0 1rem;
   }

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Profile.css";
 import Header from "../../components/header/Header";
-import Footer from "../../components/footer/Footer";
 import banner from "../../images/banner.png";
 import user from "../../images/user.png";
 import withAuth from "../../routes/withAuth";
@@ -163,23 +162,36 @@ const Profile = (props) => {
                   </div>
                   <div className="sub-section2">
                     <div className="title-bar">
-                      <h4>Username :</h4>
-                      <h4>Email :</h4>
-                      <h4>Phone Number :</h4>
-                      <h4>Gender :</h4>
-                    </div>
-                    <div className="information">
-                      <h4>{userData?.profile?.username}</h4>
-                      <h4>{userData?.profile?.email}</h4>
-                      <h4>{userData?.profile?.contact_number}</h4>
-                      <h4>{userData?.profile?.gender}</h4>
+                      <div className="info-bar">
+                        <h4>Username</h4>
+                        <div className="information">
+                          <h4>{userData?.profile?.username}</h4>
+                        </div>
+                      </div>
+                      <div className="info-bar">
+                        <h4>Email</h4>
+                        <div className="information">
+                          <h4>{userData?.profile?.email}</h4>
+                        </div>
+                      </div>
+                      <div className="info-bar">
+                        <h4>Phone Number</h4>
+                        <div className="information">
+                          <h4>{userData?.profile?.contact_number}</h4>
+                        </div>
+                      </div>
+                      <div className="info-bar">
+                        <h4>Gender</h4>
+                        <div className="information">
+                          <h4>{userData?.profile?.gender}</h4>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <Footer />
         </div>
       )}
     </div>
