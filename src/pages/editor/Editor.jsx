@@ -190,17 +190,24 @@ const Editor = () => {
                 className="problem-text"
                 dangerouslySetInnerHTML={{ __html: resp?.problem?.constraints }}
               />
+              {/* <h3 className="problem-heading-sub">Sample Test Cases:</h3>
+              <div
+                className="problem-text"
+                dangerouslySetInnerHTML={{
+                  __html: resp?.problem?.sample[],
+                }}
+              /> */}
               <h3 className="problem-heading-sub">Explanation:</h3>
               <div
                 className="problem-text"
                 dangerouslySetInnerHTML={{ __html: resp?.problem?.explanation }}
               />
-              <h4 className="problem-heading-sub">Time Limit:</h4>
+              <h3 className="problem-heading-sub">Time Limit:</h3>
               <div
                 className="problem-text"
                 dangerouslySetInnerHTML={{ __html: resp?.problem?.timeLimit }}
               />
-              <h4 className="problem-heading-sub">Memory Limit:</h4>
+              <h3 className="problem-heading-sub">Memory Limit:</h3>
               <div
                 className="problem-text"
                 dangerouslySetInnerHTML={{ __html: resp?.problem?.memoryLimit }}

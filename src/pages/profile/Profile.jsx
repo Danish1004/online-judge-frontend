@@ -149,7 +149,6 @@ const Profile = (props) => {
                   <h3>{userData.message}</h3>
                 </div>
               </form>
-              {/* new div */}
               <div className="details-card">
                 <div className="image-banner">
                   <img src={banner} alt="background" />
