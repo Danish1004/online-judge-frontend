@@ -64,9 +64,13 @@ h3 {
     gap: 4rem;
     justify-content: center;
   }
+  .about-sub-head {
+    font-weight: 300;
+  }
 
   .main_title {
     font-size: 3rem;
+    font-weight: 200;
     text-align: center;
   }
 

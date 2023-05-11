@@ -37,7 +37,7 @@ const Home = () => {
               <div className="about_grid">
                 <div className="grid-item">
                   <div className="about_info">
-                    <h2>Join a Room</h2>
+                    <h2 className="about-sub-head">Join a Room</h2>
                     <p>
                       Join or create a room, invite your friends, and get ready
                       to solve problems together.
@@ -46,7 +46,7 @@ const Home = () => {
                 </div>
                 <div className="grid-item">
                   <div className="about_info">
-                    <h2>Start The Room</h2>
+                    <h2 className="about-sub-head">Start The Room</h2>
                     <p>
                       You'll all get the same coding question to solve. Only you
                       can see your editor.
@@ -55,7 +55,7 @@ const Home = () => {
                 </div>
                 <div className="grid-item">
                   <div className="about_info">
-                    <h2>Solve Problems</h2>
+                    <h2 className="about-sub-head">Solve Problems</h2>
                     <p>
                       Chat and solve questions together. Once you're done, you
                       can browse other people's solutions.
@@ -69,14 +69,14 @@ const Home = () => {
             </div>
           </div>
           <div className="secondary_info">
-            <h2>Start Learning Together</h2>
+            <h2 className="about-sub-head">Start Learning Together</h2>
             <p className="info_1">
               Join our community of over 100,000 programmers and start solving
               problems today.
             </p>
           </div>
           <div className="questions_info">
-            <h2>Frequently Asked Questions</h2>
+            <h2 className="about-sub-head">Frequently Asked Questions</h2>
             <div className="questions">
               <div className="question_parts">
                 <h3>What is semicolon?</h3>
