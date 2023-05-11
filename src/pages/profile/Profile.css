@@ -246,7 +246,7 @@ input {
     font-weight: 300;
   }
   .sub-info-head {
-    font-weight: 300;
+    font-weight: 400;
   }
 }
 @media (max-width: 586px) {
@@ -283,6 +283,6 @@ input {
     font-weight: 300;
   }
   .sub-info-head {
-    font-weight: 300;
+    font-weight: 400;
   }
 }
