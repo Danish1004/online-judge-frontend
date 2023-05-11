@@ -126,6 +126,10 @@ input:valid ~ label {
   text-decoration: underline;
 }
 @media screen and (max-width: 650px) {
+  .login-content {
+    margin-top: 4rem;
+    justify-content: flex-start;
+  }
   .container {
     grid-template-columns: 1fr;
     grid-gap: 3rem;
