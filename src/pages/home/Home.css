@@ -67,6 +67,9 @@ h3 {
   .about-sub-head {
     font-weight: 300;
   }
+  .about-p {
+    font-weight: 200;
+  }
 
   .main_title {
     font-size: 3rem;

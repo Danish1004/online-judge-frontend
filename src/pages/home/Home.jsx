@@ -38,7 +38,7 @@ const Home = () => {
                 <div className="grid-item">
                   <div className="about_info">
                     <h2 className="about-sub-head">Join a Room</h2>
-                    <p>
+                    <p className="about-p">
                       Join or create a room, invite your friends, and get ready
                       to solve problems together.
                     </p>
@@ -47,7 +47,7 @@ const Home = () => {
                 <div className="grid-item">
                   <div className="about_info">
                     <h2 className="about-sub-head">Start The Room</h2>
-                    <p>
+                    <p className="about-p">
                       You'll all get the same coding question to solve. Only you
                       can see your editor.
                     </p>
@@ -56,7 +56,7 @@ const Home = () => {
                 <div className="grid-item">
                   <div className="about_info">
                     <h2 className="about-sub-head">Solve Problems</h2>
-                    <p>
+                    <p className="about-p">
                       Chat and solve questions together. Once you're done, you
                       can browse other people's solutions.
                     </p>
@@ -70,7 +70,7 @@ const Home = () => {
           </div>
           <div className="secondary_info">
             <h2 className="about-sub-head">Start Learning Together</h2>
-            <p className="info_1">
+            <p className="about-p">
               Join our community of over 100,000 programmers and start solving
               problems today.
             </p>
@@ -80,7 +80,7 @@ const Home = () => {
             <div className="questions">
               <div className="question_parts">
                 <h3>What is semicolon?</h3>
-                <p>
+                <p className="about-p">
                   semicolon is a free site where you can work on coding and
                   algorithms problems together with others.
                 </p>
@@ -96,7 +96,7 @@ const Home = () => {
 
               <div className="question_parts">
                 <h3>What can I type on chat?</h3>
-                <p>
+                <p className="about-p">
                   Feel free to chat about whatever :, but don't outright give
                   answers unprovoked and please be respectful.
                 </p>
@@ -104,7 +104,7 @@ const Home = () => {
 
               <div className="question_parts">
                 <h3>What type of questions should I expect?</h3>
-                <p>
+                <p className="about-p">
                   There are standard algorithms and data structures questions
                   that you can expect from major tech companies such as Google,
                   Microsoft, Facebook, and Amazon.
@@ -113,12 +113,14 @@ const Home = () => {
 
               <div className="question_parts">
                 <h3>Is it really free?</h3>
-                <p>Yes, it's free and will always be free.</p>
+                <p className="about-p">
+                  Yes, it's free and will always be free.
+                </p>
               </div>
 
               <div className="question_parts">
                 <h3>How can I get started?</h3>
-                <p>You can get started below!</p>
+                <p className="about-p">You can get started below!</p>
               </div>
             </div>
           </div>
