@@ -56,12 +56,14 @@
   padding: 1.3rem;
 }
 .problem-text {
-  font-weight: var(--font-normal);
+  font-weight: 300;
 }
+
 .problem-heading-sub {
   margin-top: 10px;
   text-align: start;
 }
+
 .p {
   text-align: start;
 }
@@ -79,6 +81,7 @@
 }
 .problem-text p {
   text-align: start;
+  font-weight: 300;
 }
 .collective-main {
   display: flex;
