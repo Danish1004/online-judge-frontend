@@ -70,8 +70,11 @@ h3 {
 
   .main_title {
     font-size: 3rem;
-    font-weight: 200;
+    font-weight: 300;
     text-align: center;
+  }
+  .p {
+    font-weight: 200;
   }
 
   .about_grid {
